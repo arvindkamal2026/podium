@@ -2,6 +2,7 @@
 .superpowers/
 podium/.env.local
 podium/.env*.local
+!podium/.env.example
 podium/node_modules/
 podium/.next/
 podium/tsconfig.tsbuildinfo
