@@ -1,0 +1,11 @@
+.DS_Store
+.superpowers/
+podium/.env.local
+podium/.env*.local
+podium/node_modules/
+podium/.next/
+podium/tsconfig.tsbuildinfo
+podium/.agents/
+podium/.claude/
+podium/.continue/
+podium/.kiro/

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Podium - Setup Your Profile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-surface-variant": "#c2c6d6",
+              "inverse-surface": "#e5e2e1",
+              "secondary": "#ffb95f",
+              "error": "#ffb4ab",
+              "surface-container": "#201f1f",
+              "on-error-container": "#ffdad6",
+              "on-secondary-fixed-variant": "#653e00",
+              "surface-tint": "#adc6ff",
+              "error-container": "#93000a",
+              "outline": "#8c909f",
+              "primary-fixed-dim": "#adc6ff",
+              "surface-dim": "#131313",
+              "on-primary": "#002e6a",
+              "on-tertiary-fixed": "#002114",
+              "on-tertiary-fixed-variant": "#005137",
+              "secondary-fixed": "#ffddb8",
+              "surface-variant": "#353534",
+              "surface-container-low": "#1c1b1b",
+              "primary-container": "#4d8eff",
+              "on-secondary": "#472a00",
+              "secondary-fixed-dim": "#ffb95f",
+              "on-primary-fixed": "#001a42",
+              "inverse-on-surface": "#313030",
+              "outline-variant": "#424754",
+              "on-primary-fixed-variant": "#004395",
+              "surface-container-highest": "#353534",
+              "on-secondary-container": "#5b3800",
+              "background": "#131313",
+              "tertiary-container": "#00a574",
+              "inverse-primary": "#005ac2",
+              "primary": "#adc6ff",
+              "surface-container-high": "#2a2a2a",
+              "tertiary": "#4edea5",
+              "on-tertiary": "#003825",
+              "surface-bright": "#3a3939",
+              "secondary-container": "#ee9800",
+              "on-tertiary-container": "#003120",
+              "on-error": "#690005",
+              "tertiary-fixed-dim": "#4edea5",
+              "surface-container-lowest": "#0e0e0e",
+              "on-primary-container": "#00285d",
+              "on-secondary-fixed": "#2a1700",
+              "on-background": "#e5e2e1",
+              "primary-fixed": "#d8e2ff",
+              "surface": "#131313",
+              "on-surface": "#e5e2e1",
+              "tertiary-fixed": "#6ffbc0"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      body {
+        background-color: #131313;
+        color: #e5e2e1;
+        font-family: 'Inter', sans-serif;
+      }
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background min-h-screen flex flex-col">
+<!-- TopAppBar Component (Transactional State: Sidebar suppressed) -->
+<header class="fixed top-0 w-full z-50 bg-[#131313]/80 backdrop-blur-xl flex justify-between items-center px-6 h-16 w-full font-plus-jakarta text-on-surface">
+<div class="flex items-center gap-2 cursor-pointer active:scale-95">
+<span class="material-symbols-outlined text-blue-400" data-icon="trophy">trophy</span>
+<span class="text-2xl font-bold tracking-tighter text-blue-400">Podium</span>
+</div>
+<div class="hidden md:flex gap-8 items-center">
+<div class="w-8 h-8 rounded-full bg-surface-container-high border border-outline-variant/15 overflow-hidden">
+<img alt="Profile" class="w-full h-full object-cover" data-alt="Close up minimalist portrait of a professional student with soft lighting against a neutral dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbtPfisAn5SF2w-pf1YT8Vrf0ssg8Pi1ZnuArVAZOG5zO9IlbxQ2bCNVZCY3fBY5xHQ--_as2aiqaiqnG9NAtcvnOqRaI9NQoMy0AtOh55bXGqT9WK4HJhl4hqT0VXGpfr6APqCP7oMrJ7-Vcjk1M9ELEdPz_q-oMygJBGGvwE81ay_kbJo9u01kpaM_Nmyi1lyKg1Ef-z_1iKD9RxW3wIhFFBCymBYSp4RaYMUSR5aoUgFg6uarePQiJ9aGWPSGOpFXimsaQZJLQ"/>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 w-full bg-gradient-to-b from-[#2A2A2A] to-transparent h-[1px]"></div>
+</header>
+<!-- Main Content: Onboarding Canvas -->
+<main class="flex-grow flex items-center justify-center pt-16 px-4">
+<div class="max-w-xl w-full flex flex-col gap-12">
+<!-- Header Section -->
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-4">
+<span class="text-xs font-bold tracking-[0.2em] text-blue-400 font-headline uppercase">Step 01 / 04</span>
+<div class="h-[1px] flex-grow bg-outline-variant/20"></div>
+</div>
+<h1 class="text-5xl md:text-6xl font-extrabold tracking-tight font-headline text-on-surface leading-tight">
+                    Let's set up your profile
+                </h1>
+<p class="text-on-surface-variant text-lg font-body max-w-md">
+                    Personalize your prep experience. This information helps us curate the right competitive materials for you.
+                </p>
+</div>
+<!-- Form Section: Bento Style -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Input Field: First Name -->
+<div class="group flex flex-col p-6 rounded-xl bg-surface-container-low transition-all duration-300 hover:bg-surface-container">
+<label class="text-[10px] font-bold tracking-widest text-blue-400 uppercase mb-4 block">First Name</label>
+<input class="bg-transparent border-none p-0 text-2xl font-semibold text-on-surface placeholder:text-on-surface-variant/30 focus:ring-0 w-full" placeholder="Alex" type="text"/>
+<div class="h-0.5 w-0 group-focus-within:w-full bg-blue-400 transition-all duration-500 mt-2"></div>
+</div>
+<!-- Input Field: Last Name -->
+<div class="group flex flex-col p-6 rounded-xl bg-surface-container-low transition-all duration-300 hover:bg-surface-container">
+<label class="text-[10px] font-bold tracking-widest text-blue-400 uppercase mb-4 block">Last Name</label>
+<input class="bg-transparent border-none p-0 text-2xl font-semibold text-on-surface placeholder:text-on-surface-variant/30 focus:ring-0 w-full" placeholder="Morgan" type="text"/>
+<div class="h-0.5 w-0 group-focus-within:w-full bg-blue-400 transition-all duration-500 mt-2"></div>
+</div>
+<!-- Input Field: School Name (Full Width) -->
+<div class="md:col-span-2 group flex flex-col p-6 rounded-xl bg-surface-container-low transition-all duration-300 hover:bg-surface-container">
+<div class="flex justify-between items-start mb-4">
+<label class="text-[10px] font-bold tracking-widest text-blue-400 uppercase block">School Name</label>
+<span class="material-symbols-outlined text-on-surface-variant/40 text-sm" data-icon="school">school</span>
+</div>
+<input class="bg-transparent border-none p-0 text-2xl font-semibold text-on-surface placeholder:text-on-surface-variant/30 focus:ring-0 w-full" placeholder="Enter your high school or college" type="text"/>
+<div class="h-0.5 w-0 group-focus-within:w-full bg-blue-400 transition-all duration-500 mt-2"></div>
+</div>
+</div>
+<!-- CTA Section -->
+<div class="flex flex-col md:flex-row items-center justify-between gap-6">
+<div class="flex gap-2">
+<div class="w-2 h-2 rounded-full bg-blue-400"></div>
+<div class="w-2 h-2 rounded-full bg-surface-container-highest"></div>
+<div class="w-2 h-2 rounded-full bg-surface-container-highest"></div>
+<div class="w-2 h-2 rounded-full bg-surface-container-highest"></div>
+</div>
+<button class="w-full md:w-auto px-10 py-4 bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold rounded-lg text-lg flex items-center justify-center gap-3 active:scale-95 transition-all shadow-xl shadow-blue-500/10">
+                    Next Step
+                    <span class="material-symbols-outlined text-xl" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</main>
+<!-- Footer Component -->
+<footer class="w-full border-t border-[#424754]/15 bg-[#0E0E0E] flex flex-col items-center text-center p-8 mt-auto">
+<div class="max-w-4xl w-full flex flex-col gap-6">
+<div class="flex flex-wrap justify-center gap-6 text-[10px] font-inter uppercase tracking-widest text-gray-500">
+<a class="hover:text-blue-300 transition-colors" href="#">Official DECA Resources</a>
+<a class="hover:text-blue-300 transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-blue-300 transition-colors" href="#">Terms of Service</a>
+</div>
+<p class="text-[10px] font-inter uppercase tracking-widest leading-relaxed text-gray-500/60 max-w-2xl mx-auto">
+                Podium is an independent student-built prep platform. Not affiliated with or endorsed by DECA Inc. DECA® is a registered trademark of DECA Inc.
+            </p>
+</div>
+</footer>
+</body></html>

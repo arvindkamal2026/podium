@@ -1,0 +1,16 @@
+[debug] [2026-04-03T15:14:07.221Z] ----------------------------------------------------------------------
+[debug] [2026-04-03T15:14:07.222Z] Command:       /opt/homebrew/Cellar/node/25.6.1_1/bin/node /opt/homebrew/bin/firebase deploy --only firestore:ruless
+[debug] [2026-04-03T15:14:07.222Z] CLI Version:   15.13.0
+[debug] [2026-04-03T15:14:07.222Z] Platform:      darwin
+[debug] [2026-04-03T15:14:07.222Z] Node Version:  v25.6.1
+[debug] [2026-04-03T15:14:07.222Z] Time:          Fri Apr 03 2026 10:14:07 GMT-0500 (Central Daylight Time)
+[debug] [2026-04-03T15:14:07.222Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-04-03T15:14:07.899Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-04-03T15:14:07.899Z] > authorizing via signed-in user (arvindkamal2026@gmail.com)
+[debug] [2026-04-03T15:14:07.899Z] [iam] checking project podium-deca for permissions ["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get"]
+[debug] [2026-04-03T15:14:07.899Z] Checked if tokens are valid: false, expires at: 1775178311432
+[debug] [2026-04-03T15:14:07.899Z] Checked if tokens are valid: false, expires at: 1775178311432
+[debug] [2026-04-03T15:14:07.899Z] > refreshing access token with scopes: []
+[debug] [2026-04-03T15:14:07.900Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2026-04-03T15:14:07.900Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
