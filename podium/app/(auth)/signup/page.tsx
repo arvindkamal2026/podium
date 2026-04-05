@@ -2,11 +2,37 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { signUpWithEmail, signInWithGoogle } from "@/lib/firebase/auth";
+import { signUpWithEmail, signInWithEmail, signInWithGoogle } from "@/lib/firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
+import { getClientDb, getClientAuth } from "@/lib/firebase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
+
+function friendlyAuthError(err: unknown): string {
+  const code = (err as { code?: string })?.code;
+  switch (code) {
+    case "auth/email-already-in-use":
+      return "An account with this email already exists. Please sign in.";
+    case "auth/weak-password":
+      return "Password must be at least 6 characters.";
+    case "auth/invalid-email":
+      return "Please enter a valid email address.";
+    case "auth/popup-closed-by-user":
+      return "Sign-in popup was closed. Please try again.";
+    case "auth/network-request-failed":
+      return "Network error. Check your connection and try again.";
+    default:
+      return "Something went wrong. Please try again.";
+  }
+}
+
+async function userDocExists(uid: string): Promise<boolean> {
+  const ref = doc(getClientDb(), `users/${uid}`);
+  const snap = await getDoc(ref);
+  return snap.exists();
+}
 
 export default function SignupPage() {
   const router = useRouter();
@@ -34,9 +60,19 @@ export default function SignupPage() {
       await signUpWithEmail(email, password);
       router.push("/onboarding");
     } catch (err: unknown) {
-      const message =
-        err instanceof Error ? err.message : "Failed to create account";
-      setError(message);
+      // If account already exists, sign them in with the same credentials
+      if ((err as { code?: string }).code === "auth/email-already-in-use") {
+        try {
+          await signInWithEmail(email, password);
+          router.push("/home");
+          return;
+        } catch {
+          setError("An account with this email already exists. Please sign in.");
+          setLoading(false);
+          return;
+        }
+      }
+      setError(friendlyAuthError(err));
     } finally {
       setLoading(false);
     }
@@ -47,11 +83,11 @@ export default function SignupPage() {
     setLoading(true);
     try {
       await signInWithGoogle();
-      router.push("/onboarding");
+      const uid = getClientAuth().currentUser?.uid;
+      const hasProfile = uid ? await userDocExists(uid) : false;
+      router.push(hasProfile ? "/home" : "/onboarding");
     } catch (err: unknown) {
-      const message =
-        err instanceof Error ? err.message : "Failed to sign in with Google";
-      setError(message);
+      setError(friendlyAuthError(err));
     } finally {
       setLoading(false);
     }

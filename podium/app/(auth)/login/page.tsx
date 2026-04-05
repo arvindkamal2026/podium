@@ -8,6 +8,26 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
 
+function friendlyAuthError(err: unknown): string {
+  const code = (err as { code?: string })?.code;
+  switch (code) {
+    case "auth/invalid-credential":
+    case "auth/wrong-password":
+    case "auth/user-not-found":
+      return "Incorrect email or password.";
+    case "auth/too-many-requests":
+      return "Too many attempts. Please wait a moment and try again.";
+    case "auth/user-disabled":
+      return "This account has been disabled.";
+    case "auth/popup-closed-by-user":
+      return "Sign-in popup was closed. Please try again.";
+    case "auth/network-request-failed":
+      return "Network error. Check your connection and try again.";
+    default:
+      return "Something went wrong. Please try again.";
+  }
+}
+
 export default function LoginPage() {
   const router = useRouter();
   const [email, setEmail] = useState("");
@@ -23,9 +43,7 @@ export default function LoginPage() {
       await signInWithEmail(email, password);
       router.push("/home");
     } catch (err: unknown) {
-      const message =
-        err instanceof Error ? err.message : "Failed to sign in";
-      setError(message);
+      setError(friendlyAuthError(err));
     } finally {
       setLoading(false);
     }
@@ -38,9 +56,7 @@ export default function LoginPage() {
       await signInWithGoogle();
       router.push("/home");
     } catch (err: unknown) {
-      const message =
-        err instanceof Error ? err.message : "Failed to sign in with Google";
-      setError(message);
+      setError(friendlyAuthError(err));
     } finally {
       setLoading(false);
     }
