@@ -35,9 +35,14 @@ export async function signOut() {
 
 async function setSessionCookie(user: User) {
   const idToken = await user.getIdToken();
-  await fetch("/api/auth/session", {
+  const res = await fetch("/api/auth/session", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ idToken }),
   });
+  if (!res.ok) {
+    throw new Error("Failed to create session");
+  }
+  // Ensure the browser has processed the Set-Cookie header before navigating
+  await res.json();
 }

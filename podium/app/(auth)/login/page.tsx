@@ -41,7 +41,7 @@ export default function LoginPage() {
     setLoading(true);
     try {
       await signInWithEmail(email, password);
-      router.push("/home");
+      router.replace("/home");
     } catch (err: unknown) {
       setError(friendlyAuthError(err));
     } finally {
@@ -54,7 +54,7 @@ export default function LoginPage() {
     setLoading(true);
     try {
       await signInWithGoogle();
-      router.push("/home");
+      router.replace("/home");
     } catch (err: unknown) {
       setError(friendlyAuthError(err));
     } finally {

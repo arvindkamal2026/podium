@@ -58,13 +58,13 @@ export default function SignupPage() {
     setLoading(true);
     try {
       await signUpWithEmail(email, password);
-      router.push("/onboarding");
+      router.replace("/onboarding");
     } catch (err: unknown) {
       // If account already exists, sign them in with the same credentials
       if ((err as { code?: string }).code === "auth/email-already-in-use") {
         try {
           await signInWithEmail(email, password);
-          router.push("/home");
+          router.replace("/home");
           return;
         } catch {
           setError("An account with this email already exists. Please sign in.");
@@ -85,7 +85,7 @@ export default function SignupPage() {
       await signInWithGoogle();
       const uid = getClientAuth().currentUser?.uid;
       const hasProfile = uid ? await userDocExists(uid) : false;
-      router.push(hasProfile ? "/home" : "/onboarding");
+      router.replace(hasProfile ? "/home" : "/onboarding");
     } catch (err: unknown) {
       setError(friendlyAuthError(err));
     } finally {

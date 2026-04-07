@@ -10,9 +10,13 @@ export function useDocument<T>(path: string | null) {
 
   useEffect(() => {
     if (!path) {
+      setData(null);
       setLoading(false);
       return;
     }
+
+    // Reset loading when path changes so consumers don't see stale data + loading=false
+    setLoading(true);
 
     let unsubscribeSnapshot: (() => void) | undefined;
     let cancelled = false;
