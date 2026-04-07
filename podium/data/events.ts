@@ -32,7 +32,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialSampleExamUrl:
       "https://www.deca.org/wp-content/uploads/2023/08/HS-ACT-Sample-Exam.pdf",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-ACT-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/685ae17f400cac206b1afc09_HS_Series_Guidelines.pdf",
   },
   {
     id: "aam",
@@ -51,7 +51,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialSampleExamUrl:
       "https://www.deca.org/wp-content/uploads/2023/08/HS-AAM-Sample-Exam.pdf",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-AAM-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/685ae17f400cac206b1afc09_HS_Series_Guidelines.pdf",
   },
   {
     id: "asm",
@@ -70,7 +70,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialSampleExamUrl:
       "https://www.deca.org/wp-content/uploads/2023/08/HS-ASM-Sample-Exam.pdf",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-ASM-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/685ae17f400cac206b1afc09_HS_Series_Guidelines.pdf",
   },
   {
     id: "bfs",
@@ -89,7 +89,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialSampleExamUrl:
       "https://www.deca.org/wp-content/uploads/2023/08/HS-BFS-Sample-Exam.pdf",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-BFS-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/685ae17f400cac206b1afc09_HS_Series_Guidelines.pdf",
   },
   {
     id: "ebg",
@@ -106,7 +106,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialPiPdfUrl: "",
     officialSampleExamUrl: "",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-EBG-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/68557d9501e4b39b79d84c7b_HS_EBG_Guidelines.pdf",
   },
   {
     id: "bltdm",
@@ -125,7 +125,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialSampleExamUrl:
       "https://www.deca.org/wp-content/uploads/2023/08/HS-BLTDM-Sample-Exam.pdf",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-BLTDM-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/685ae2339749fd90c54cc76b_HS_TDM_Guidelines.pdf",
   },
   {
     id: "bsm",
@@ -144,7 +144,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialSampleExamUrl:
       "https://www.deca.org/wp-content/uploads/2023/08/HS-BSM-Sample-Exam.pdf",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-BSM-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/685ae17f400cac206b1afc09_HS_Series_Guidelines.pdf",
   },
   {
     id: "bor",
@@ -163,7 +163,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialSampleExamUrl:
       "https://www.deca.org/wp-content/uploads/2023/08/HS-BOR-Sample-Exam.pdf",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-BOR-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/68557abce97b1686ca81f23b_HS_BOR_Guidelines.pdf",
   },
   {
     id: "pmbs",
@@ -180,7 +180,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialPiPdfUrl: "",
     officialSampleExamUrl: "",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-PMBS-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/685ae138bc850f72564bdccc_HS_PM_Guidelines.pdf",
   },
   {
     id: "bmor",
@@ -199,7 +199,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialSampleExamUrl:
       "https://www.deca.org/wp-content/uploads/2023/08/HS-BMOR-Sample-Exam.pdf",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-BMOR-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/68557abce97b1686ca81f23b_HS_BOR_Guidelines.pdf",
   },
   {
     id: "btdm",
@@ -218,7 +218,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialSampleExamUrl:
       "https://www.deca.org/wp-content/uploads/2023/08/HS-BTDM-Sample-Exam.pdf",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-BTDM-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/685ae2339749fd90c54cc76b_HS_TDM_Guidelines.pdf",
   },
   {
     id: "pmcd",
@@ -235,7 +235,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialPiPdfUrl: "",
     officialSampleExamUrl: "",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-PMCD-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/685ae138bc850f72564bdccc_HS_PM_Guidelines.pdf",
   },
   {
     id: "pmca",
@@ -252,7 +252,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialPiPdfUrl: "",
     officialSampleExamUrl: "",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-PMCA-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/685ae138bc850f72564bdccc_HS_PM_Guidelines.pdf",
   },
   {
     id: "pmcg",
@@ -269,7 +269,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialPiPdfUrl: "",
     officialSampleExamUrl: "",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-PMCG-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/685ae138bc850f72564bdccc_HS_PM_Guidelines.pdf",
   },
   {
     id: "ent",
@@ -288,7 +288,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialSampleExamUrl:
       "https://www.deca.org/wp-content/uploads/2023/08/HS-ENT-Sample-Exam.pdf",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-ENT-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/685ae17f400cac206b1afc09_HS_Series_Guidelines.pdf",
   },
   {
     id: "etdm",
@@ -307,7 +307,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialSampleExamUrl:
       "https://www.deca.org/wp-content/uploads/2023/08/HS-ETDM-Sample-Exam.pdf",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-ETDM-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/685ae2339749fd90c54cc76b_HS_TDM_Guidelines.pdf",
   },
   {
     id: "for",
@@ -326,7 +326,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialSampleExamUrl:
       "https://www.deca.org/wp-content/uploads/2023/08/HS-FOR-Sample-Exam.pdf",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-FOR-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/68557abce97b1686ca81f23b_HS_BOR_Guidelines.pdf",
   },
   {
     id: "fce",
@@ -345,7 +345,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialSampleExamUrl:
       "https://www.deca.org/wp-content/uploads/2023/08/HS-FCE-Sample-Exam.pdf",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-FCE-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/68558709ae8e160ca834bdba_HS_PSC_Guidelines.pdf",
   },
   {
     id: "pmfl",
@@ -362,7 +362,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialPiPdfUrl: "",
     officialSampleExamUrl: "",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-PMFL-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/685ae138bc850f72564bdccc_HS_PM_Guidelines.pdf",
   },
   {
     id: "ftdm",
@@ -381,7 +381,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialSampleExamUrl:
       "https://www.deca.org/wp-content/uploads/2023/08/HS-FTDM-Sample-Exam.pdf",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-FTDM-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/685ae2339749fd90c54cc76b_HS_TDM_Guidelines.pdf",
   },
   {
     id: "fms",
@@ -400,7 +400,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialSampleExamUrl:
       "https://www.deca.org/wp-content/uploads/2023/08/HS-FMS-Sample-Exam.pdf",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-FMS-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/685ae17f400cac206b1afc09_HS_Series_Guidelines.pdf",
   },
   {
     id: "efb",
@@ -417,7 +417,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialPiPdfUrl: "",
     officialSampleExamUrl: "",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-EFB-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/68557dc71f50be4904845052_HS_EFB_Guidelines.pdf",
   },
   {
     id: "htdm",
@@ -436,7 +436,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialSampleExamUrl:
       "https://www.deca.org/wp-content/uploads/2023/08/HS-HTDM-Sample-Exam.pdf",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-HTDM-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/685ae2339749fd90c54cc76b_HS_TDM_Guidelines.pdf",
   },
   {
     id: "htor",
@@ -455,7 +455,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialSampleExamUrl:
       "https://www.deca.org/wp-content/uploads/2023/08/HS-HTOR-Sample-Exam.pdf",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-HTOR-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/68557abce97b1686ca81f23b_HS_BOR_Guidelines.pdf",
   },
   {
     id: "htps",
@@ -474,7 +474,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialSampleExamUrl:
       "https://www.deca.org/wp-content/uploads/2023/08/HS-HTPS-Sample-Exam.pdf",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-HTPS-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/68558709ae8e160ca834bdba_HS_PSC_Guidelines.pdf",
   },
   {
     id: "hlm",
@@ -493,7 +493,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialSampleExamUrl:
       "https://www.deca.org/wp-content/uploads/2023/08/HS-HLM-Sample-Exam.pdf",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-HLM-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/685ae17f400cac206b1afc09_HS_Series_Guidelines.pdf",
   },
   {
     id: "hrm",
@@ -512,7 +512,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialSampleExamUrl:
       "https://www.deca.org/wp-content/uploads/2023/08/HS-HRM-Sample-Exam.pdf",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-HRM-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/685ae17f400cac206b1afc09_HS_Series_Guidelines.pdf",
   },
   {
     id: "eib",
@@ -529,7 +529,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialPiPdfUrl: "",
     officialSampleExamUrl: "",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-EIB-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/68557e6b8278c4239006f3c7_HS_EIB_Guidelines.pdf",
   },
   {
     id: "eip",
@@ -546,7 +546,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialPiPdfUrl: "",
     officialSampleExamUrl: "",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-EIP-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/68557e897fde53b1452aa7a8_HS_EIP_Guidelines.pdf",
   },
   {
     id: "imce",
@@ -563,7 +563,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialPiPdfUrl: "",
     officialSampleExamUrl: "",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-IMCE-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/6855773a2dab86854af81ab3_HS_IMC_Guidelines.pdf",
   },
   {
     id: "imcp",
@@ -580,7 +580,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialPiPdfUrl: "",
     officialSampleExamUrl: "",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-IMCP-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/6855773a2dab86854af81ab3_HS_IMC_Guidelines.pdf",
   },
   {
     id: "imcs",
@@ -597,7 +597,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialPiPdfUrl: "",
     officialSampleExamUrl: "",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-IMCS-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/6855773a2dab86854af81ab3_HS_IMC_Guidelines.pdf",
   },
   {
     id: "ibp",
@@ -614,7 +614,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialPiPdfUrl: "",
     officialSampleExamUrl: "",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-IBP-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/685580c6a46e30b640a8d548_HS_IBP_Guidelines.pdf",
   },
   {
     id: "mcs",
@@ -633,7 +633,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialSampleExamUrl:
       "https://www.deca.org/wp-content/uploads/2023/08/HS-MCS-Sample-Exam.pdf",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-MCS-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/685ae17f400cac206b1afc09_HS_Series_Guidelines.pdf",
   },
   {
     id: "mtdm",
@@ -652,7 +652,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialSampleExamUrl:
       "https://www.deca.org/wp-content/uploads/2023/08/HS-MTDM-Sample-Exam.pdf",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-MTDM-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/685ae2339749fd90c54cc76b_HS_TDM_Guidelines.pdf",
   },
   {
     id: "pfl",
@@ -671,7 +671,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialSampleExamUrl:
       "https://www.deca.org/wp-content/uploads/2023/08/HS-PFL-Sample-Exam.pdf",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-PFL-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/6936d2b608a4ae1eedeaaa32_HS_PFL_Guidelines.pdf",
   },
   {
     id: "pbm",
@@ -690,7 +690,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialSampleExamUrl:
       "https://www.deca.org/wp-content/uploads/2023/08/HS-PBM-Sample-Exam.pdf",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-PBM-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/685ae0e69e75444393874d76_HS_PBA_Guidelines.pdf",
   },
   {
     id: "pen",
@@ -709,7 +709,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialSampleExamUrl:
       "https://www.deca.org/wp-content/uploads/2023/08/HS-PEN-Sample-Exam.pdf",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-PEN-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/685ae0e69e75444393874d76_HS_PBA_Guidelines.pdf",
   },
   {
     id: "pfn",
@@ -728,7 +728,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialSampleExamUrl:
       "https://www.deca.org/wp-content/uploads/2023/08/HS-PFN-Sample-Exam.pdf",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-PFN-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/685ae0e69e75444393874d76_HS_PBA_Guidelines.pdf",
   },
   {
     id: "pht",
@@ -747,7 +747,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialSampleExamUrl:
       "https://www.deca.org/wp-content/uploads/2023/08/HS-PHT-Sample-Exam.pdf",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-PHT-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/685ae0e69e75444393874d76_HS_PBA_Guidelines.pdf",
   },
   {
     id: "pmk",
@@ -766,7 +766,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialSampleExamUrl:
       "https://www.deca.org/wp-content/uploads/2023/08/HS-PMK-Sample-Exam.pdf",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-PMK-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/685ae0e69e75444393874d76_HS_PBA_Guidelines.pdf",
   },
   {
     id: "pse",
@@ -785,7 +785,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialSampleExamUrl:
       "https://www.deca.org/wp-content/uploads/2023/08/HS-PSE-Sample-Exam.pdf",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-PSE-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/68558709ae8e160ca834bdba_HS_PSC_Guidelines.pdf",
   },
   {
     id: "qsrm",
@@ -804,7 +804,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialSampleExamUrl:
       "https://www.deca.org/wp-content/uploads/2023/08/HS-QSRM-Sample-Exam.pdf",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-QSRM-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/685ae17f400cac206b1afc09_HS_Series_Guidelines.pdf",
   },
   {
     id: "rfsm",
@@ -823,7 +823,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialSampleExamUrl:
       "https://www.deca.org/wp-content/uploads/2023/08/HS-RFSM-Sample-Exam.pdf",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-RFSM-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/685ae17f400cac206b1afc09_HS_Series_Guidelines.pdf",
   },
   {
     id: "rms",
@@ -842,7 +842,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialSampleExamUrl:
       "https://www.deca.org/wp-content/uploads/2023/08/HS-RMS-Sample-Exam.pdf",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-RMS-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/685ae17f400cac206b1afc09_HS_Series_Guidelines.pdf",
   },
   {
     id: "pmsp",
@@ -859,7 +859,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialPiPdfUrl: "",
     officialSampleExamUrl: "",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-PMSP-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/685ae138bc850f72564bdccc_HS_PM_Guidelines.pdf",
   },
   {
     id: "seor",
@@ -878,7 +878,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialSampleExamUrl:
       "https://www.deca.org/wp-content/uploads/2023/08/HS-SEOR-Sample-Exam.pdf",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-SEOR-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/68557abce97b1686ca81f23b_HS_BOR_Guidelines.pdf",
   },
   {
     id: "sem",
@@ -897,7 +897,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialSampleExamUrl:
       "https://www.deca.org/wp-content/uploads/2023/08/HS-SEM-Sample-Exam.pdf",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-SEM-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/685ae17f400cac206b1afc09_HS_Series_Guidelines.pdf",
   },
   {
     id: "stdm",
@@ -916,7 +916,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialSampleExamUrl:
       "https://www.deca.org/wp-content/uploads/2023/08/HS-STDM-Sample-Exam.pdf",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-STDM-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/685ae2339749fd90c54cc76b_HS_TDM_Guidelines.pdf",
   },
   {
     id: "esb",
@@ -933,7 +933,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialPiPdfUrl: "",
     officialSampleExamUrl: "",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-ESB-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/68557f0d0f066c2c4c546609_HS_ESB_Guidelines.pdf",
   },
   {
     id: "smg",
@@ -950,7 +950,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialPiPdfUrl: "",
     officialSampleExamUrl: "",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-SMG-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/68b84aadbdb8eb7f1eafa49d_HS_SMG_Guidelines.pdf",
   },
   {
     id: "ttdm",
@@ -969,7 +969,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialSampleExamUrl:
       "https://www.deca.org/wp-content/uploads/2023/08/HS-TTDM-Sample-Exam.pdf",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-TTDM-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/685ae2339749fd90c54cc76b_HS_TDM_Guidelines.pdf",
   },
   {
     id: "vbcac",
@@ -986,7 +986,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialPiPdfUrl: "",
     officialSampleExamUrl: "",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-VBCAC-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/68558aad1554c0d934b88d9a_HS_VBC_Guidelines.pdf",
   },
   {
     id: "vbcen",
@@ -1003,7 +1003,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialPiPdfUrl: "",
     officialSampleExamUrl: "",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-VBCEN-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/68558aad1554c0d934b88d9a_HS_VBC_Guidelines.pdf",
   },
   {
     id: "vbcfa",
@@ -1020,7 +1020,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialPiPdfUrl: "",
     officialSampleExamUrl: "",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-VBCFA-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/68558aad1554c0d934b88d9a_HS_VBC_Guidelines.pdf",
   },
   {
     id: "vbchm",
@@ -1037,7 +1037,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialPiPdfUrl: "",
     officialSampleExamUrl: "",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-VBCHM-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/68558aad1554c0d934b88d9a_HS_VBC_Guidelines.pdf",
   },
   {
     id: "vbcpf",
@@ -1054,7 +1054,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialPiPdfUrl: "",
     officialSampleExamUrl: "",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-VBCPF-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/68558aad1554c0d934b88d9a_HS_VBC_Guidelines.pdf",
   },
   {
     id: "vbcrs",
@@ -1071,7 +1071,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialPiPdfUrl: "",
     officialSampleExamUrl: "",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-VBCRS-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/68558aad1554c0d934b88d9a_HS_VBC_Guidelines.pdf",
   },
   {
     id: "vbcrt",
@@ -1088,7 +1088,7 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialPiPdfUrl: "",
     officialSampleExamUrl: "",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-VBCRT-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/68558aad1554c0d934b88d9a_HS_VBC_Guidelines.pdf",
   },
   {
     id: "vbcsp",
@@ -1105,6 +1105,6 @@ export const DECA_EVENTS: DECAEvent[] = [
     officialPiPdfUrl: "",
     officialSampleExamUrl: "",
     officialGuidelinesUrl:
-      "https://www.deca.org/wp-content/uploads/2023/08/HS-VBCSP-Guidelines.pdf",
+      "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/68558aad1554c0d934b88d9a_HS_VBC_Guidelines.pdf",
   },
 ];
