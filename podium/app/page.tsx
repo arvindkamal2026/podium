@@ -183,8 +183,21 @@ export default function LandingPage() {
             </div>
           </div>
 
+          {/* Quote */}
+          <div className="mt-10 flex items-center gap-3">
+            <span
+              className="material-symbols-outlined text-xl"
+              style={{ color: "#ADC6FF", fontVariationSettings: '"FILL" 1' }}
+            >
+              format_quote
+            </span>
+            <p className="text-sm italic text-outline font-body">
+              Every expert was a beginner who never quit.
+            </p>
+          </div>
+
           {/* Floating trophy accent */}
-          <div className="mt-16 flex items-center gap-6 text-outline">
+          <div className="mt-10 flex items-center gap-6 text-outline">
             <span
               className="material-symbols-outlined text-7xl md:text-9xl"
               style={{
