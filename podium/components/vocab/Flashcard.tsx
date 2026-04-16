@@ -16,11 +16,16 @@ export function Flashcard({ term, definition, example, onResult }: FlashcardProp
       <div
         onClick={() => setFlipped(!flipped)}
         className="cursor-pointer perspective-1000"
+        style={{ overflow: "visible" }}
       >
         <div
-          className={`relative w-full min-h-[280px] transition-transform duration-500 transform-style-preserve-3d ${
-            flipped ? "[transform:rotateY(180deg)]" : ""
+          className={`relative w-full transform-style-preserve-3d will-change-transform ${
+            flipped ? "[transform:rotateY(180deg)]" : "[transform:rotateY(0deg)]"
           }`}
+          style={{
+            height: "280px",
+            transition: "transform 0.55s cubic-bezier(0.4, 0.2, 0.2, 1)",
+          }}
         >
           {/* Front */}
           <div className="absolute inset-0 backface-hidden bg-surface-container-low rounded-2xl p-8 flex flex-col items-center justify-center">
