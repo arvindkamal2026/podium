@@ -5,7 +5,7 @@ import { useDocument } from "@/lib/hooks/useFirestore";
 import { useEffect, useState } from "react";
 import { collection, onSnapshot } from "firebase/firestore";
 import { getClientDb } from "@/lib/firebase/client";
-import { PERFORMANCE_INDICATORS } from "@/data/performance-indicators";
+import { getPIsForEvent } from "@/data/pis";
 import { DECA_EVENTS } from "@/data/events";
 import { MasterySummaryBar } from "@/components/pi/MasterySummaryBar";
 import { PIList } from "@/components/pi/PIList";
@@ -55,7 +55,7 @@ export default function PITrackerPage() {
     );
   }
 
-  const eventPIs = PERFORMANCE_INDICATORS.filter((pi) => pi.eventId === profile?.eventId);
+  const eventPIs = getPIsForEvent(profile?.eventId ?? "");
   const event = DECA_EVENTS.find((e) => e.id === profile?.eventId);
 
   const items = eventPIs.map((pi) => {
