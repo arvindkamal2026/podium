@@ -32,7 +32,7 @@ export function CountdownTimer({ targetDate }: { targetDate: string | null }) {
         </span>
       </div>
       <p className="text-sm text-outline mt-2">
-        {hours}h {minutes}m remaining &middot; {new Date(targetDate).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
+        {hours}h {minutes}m remaining &middot; {new Date(targetDate + "T00:00:00").toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
       </p>
     </div>
   );

@@ -29,6 +29,11 @@ interface UserProfile {
   createdAt: string;
 }
 
+// Insert spaces between CamelCase words (e.g. "Prosper HighSchool" → "Prosper High School")
+function normalizeSchoolName(name: string): string {
+  return name.replace(/([a-z])([A-Z])/g, "$1 $2").trim();
+}
+
 const CLUSTERS = [
   { value: "finance", label: "Finance" },
   { value: "marketing", label: "Marketing" },
@@ -61,7 +66,7 @@ export default function ProfilePage() {
     if (profile) {
       setFirstName(profile.firstName);
       setLastName(profile.lastName);
-      setSchool(profile.school);
+      setSchool(normalizeSchoolName(profile.school));
       setCluster(profile.cluster);
       setEventId(profile.eventId);
       setCompetitionDate(profile.competitionDate);
@@ -229,15 +234,6 @@ export default function ProfilePage() {
           </p>
         </div>
       )}
-
-      {/* Sign Out */}
-      <button
-        onClick={handleSignOut}
-        className="flex items-center gap-2 bg-surface-container-low rounded-xl px-5 py-2.5 text-sm text-outline hover:text-on-surface hover:bg-surface-container transition-colors"
-      >
-        <span className="material-symbols-outlined text-lg">logout</span>
-        Sign Out
-      </button>
 
       {/* Danger Zone */}
       <div className="bg-error/5 rounded-2xl p-8 space-y-4">

@@ -34,6 +34,7 @@ export default function EventsPage() {
 
   const filtered = useMemo(() => {
     return DECA_EVENTS.filter((e) => {
+      if (e.id === profile?.eventId) return false; // shown in pinned "Your Event" section
       if (cluster !== "all" && e.cluster !== cluster) return false;
       if (category !== "all" && e.category !== category) return false;
       if (
@@ -44,7 +45,7 @@ export default function EventsPage() {
         return false;
       return true;
     });
-  }, [search, cluster, category]);
+  }, [search, cluster, category, profile?.eventId]);
 
   if (authLoading || profileLoading) {
     return (
@@ -60,7 +61,7 @@ export default function EventsPage() {
     <div className="space-y-6">
       <div>
         <h1 className="font-headline text-3xl font-bold tracking-tight">Events</h1>
-        <p className="text-outline mt-1">All 59 DECA competitive events</p>
+        <p className="text-outline mt-1">All {DECA_EVENTS.length} DECA competitive events</p>
       </div>
 
       {userEvent && (

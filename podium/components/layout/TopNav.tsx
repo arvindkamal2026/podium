@@ -3,11 +3,19 @@
 import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/hooks/useAuth";
+import { useDocument } from "@/lib/hooks/useFirestore";
 import { signOut } from "@/lib/firebase/auth";
+import { DECA_EVENTS } from "@/data/events";
+
+interface UserProfile {
+  eventId: string;
+}
 
 export function TopNav() {
   const { user } = useAuth();
   const router = useRouter();
+  const { data: profile } = useDocument<UserProfile>(user ? `users/${user.uid}` : null);
+  const userEvent = DECA_EVENTS.find((e) => e.id === profile?.eventId);
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
@@ -42,9 +50,11 @@ export function TopNav() {
       </div>
 
       <div className="flex items-center gap-4">
-        <span className="text-[11px] font-semibold tracking-[0.1em] uppercase text-outline hidden md:block">
-          BFS — Business Finance Series
-        </span>
+        {userEvent && (
+          <span className="text-[11px] font-semibold tracking-[0.1em] uppercase text-outline hidden md:block">
+            {userEvent.code} — {userEvent.name}
+          </span>
+        )}
 
         <div className="relative" ref={menuRef}>
           <button

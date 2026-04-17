@@ -62,7 +62,7 @@ export default function DashboardPage() {
           Welcome back, {profile.firstName}
         </h1>
         <p className="text-outline mt-1">
-          {profile.eventId.toUpperCase()} &middot; {profile.competitionLevel}
+          {profile.eventId.toUpperCase()} &middot; {profile.competitionLevel.toUpperCase()}
         </p>
       </div>
 

@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 const ACTIONS = [
-  { href: "/exams", icon: "quiz", title: "Practice Exam", desc: "Take a timed 100-question exam" },
+  { href: "/exams", icon: "quiz", title: "Practice Exam", desc: "Take a timed practice exam" },
   { href: "/roleplay", icon: "record_voice_over", title: "Role Play", desc: "Practice with AI judge scoring" },
   { href: "/vocab", icon: "style", title: "Flashcards", desc: "Study key terms for your event" },
 ];
