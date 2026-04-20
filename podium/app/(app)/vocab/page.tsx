@@ -20,6 +20,7 @@ interface UserProfile {
 
 interface VocabProgressData {
   status: "mastered" | "learning" | "untested";
+  lastResult: "correct" | "incorrect" | null;
   lastTested: string | null;
 }
 
@@ -81,6 +82,10 @@ export default function VocabPage() {
   // Apply status filter to study queue
   const words = useMemo(() => {
     if (statusFilter === "all") return allWords;
+    if (statusFilter === "learning") {
+      // "Didn't Know" = words whose most recent answer was incorrect
+      return allWords.filter((w) => progress[w.id]?.lastResult === "incorrect");
+    }
     return allWords.filter((w) => {
       const status = progress[w.id]?.status ?? "untested";
       return status === statusFilter;
@@ -105,8 +110,8 @@ export default function VocabPage() {
   );
 
   const mastered = allWords.filter((w) => progress[w.id]?.status === "mastered").length;
-  const learning = allWords.filter((w) => progress[w.id]?.status === "learning").length;
-  const untested = allWords.length - mastered - learning;
+  const learning = allWords.filter((w) => progress[w.id]?.lastResult === "incorrect").length;
+  const untested = allWords.filter((w) => (progress[w.id]?.status ?? "untested") === "untested").length;
 
   const STATUS_FILTERS: { key: StatusFilter; label: string; count: number; color: string; activeClass: string }[] = [
     { key: "all",      label: "All",         count: allWords.length, color: "text-on-surface",    activeClass: "bg-primary text-on-primary" },

@@ -24,6 +24,7 @@ export async function updateVocabProgress(wordId: string, isCorrect: boolean) {
     if (!snap.exists) {
       await ref.set({
         status: isCorrect ? "learning" : "untested",
+        lastResult: isCorrect ? "correct" : "incorrect",
         timesTested: 1,
         timesCorrect: isCorrect ? 1 : 0,
         consecutiveCorrect: isCorrect ? 1 : 0,
@@ -39,6 +40,7 @@ export async function updateVocabProgress(wordId: string, isCorrect: boolean) {
 
       await ref.update({
         status: newStatus,
+        lastResult: isCorrect ? "correct" : "incorrect",
         timesTested: FieldValue.increment(1),
         timesCorrect: isCorrect ? FieldValue.increment(1) : data.timesCorrect,
         consecutiveCorrect: newConsecutive,
