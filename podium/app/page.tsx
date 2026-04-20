@@ -52,27 +52,6 @@ const clusters = [
   { name: "Personal Finance", icon: "savings", color: "#80DEEA" },
 ];
 
-const testimonials = [
-  {
-    quote:
-      "I went from not knowing what a PI was to placing at States in three months. Podium's role play feedback is insane.",
-    name: "Alex R.",
-    event: "Principles of Finance",
-  },
-  {
-    quote:
-      "The practice exams are actually hard — harder than the ones at conference. That's exactly what you need to prepare.",
-    name: "Priya M.",
-    event: "Business Management & Administration",
-  },
-  {
-    quote:
-      "Having all 59 events in one place with AI explanations changed how our entire chapter studies. Wish this existed sooner.",
-    name: "Jordan T.",
-    event: "Marketing Communications Series",
-  },
-];
-
 const stats = [
   { value: "59", label: "Events Covered" },
   { value: "500+", label: "Performance Indicators" },
@@ -181,19 +160,6 @@ export default function LandingPage() {
                 See All Events
               </Link>
             </div>
-          </div>
-
-          {/* Quote */}
-          <div className="mt-10 flex items-center gap-3">
-            <span
-              className="material-symbols-outlined text-xl"
-              style={{ color: "#ADC6FF", fontVariationSettings: '"FILL" 1' }}
-            >
-              format_quote
-            </span>
-            <p className="text-sm italic text-outline font-body">
-              Every expert was a beginner who never quit.
-            </p>
           </div>
 
           {/* Floating trophy accent */}
@@ -385,51 +351,6 @@ export default function LandingPage() {
               View all 59 events
               <span className="material-symbols-outlined text-base">arrow_forward</span>
             </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ── SOCIAL PROOF ── */}
-      <section id="about" className="py-24 px-6 bg-surface-container-low">
-        <div className="max-w-6xl mx-auto">
-          <div className="mb-16">
-            <p className="text-sm font-semibold uppercase tracking-widest text-outline mb-3 font-body">
-              From competitors
-            </p>
-            <h2 className="font-headline text-4xl md:text-5xl font-extrabold tracking-tighter">
-              Real results, real competitors.
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {testimonials.map((t) => (
-              <div
-                key={t.name}
-                className="bg-surface-container rounded-2xl p-8 flex flex-col gap-6"
-              >
-                {/* Stars */}
-                <div className="flex gap-0.5">
-                  {[1, 2, 3, 4, 5].map((s) => (
-                    <span
-                      key={s}
-                      className="material-symbols-outlined text-sm"
-                      style={{ color: "#FFB95F", fontVariationSettings: '"FILL" 1' }}
-                    >
-                      star
-                    </span>
-                  ))}
-                </div>
-
-                <p className="text-on-surface text-sm leading-relaxed font-body flex-1">
-                  &ldquo;{t.quote}&rdquo;
-                </p>
-
-                <div>
-                  <p className="font-headline font-semibold text-sm">{t.name}</p>
-                  <p className="text-xs text-outline font-body">{t.event}</p>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </section>
