@@ -11,22 +11,33 @@ export interface PI {
   text: string;
   cluster: string;
   events: string[];
+  instructionalArea: string;
+  instructionalAreaCode: string;
   /** Derived display code, e.g. "PI-001" */
   code: string;
-  /** Cluster name used as a category label */
+  /** Instructional Area used as the category label */
   category: string;
   /** Fixed at medium — no difficulty metadata in source PDFs */
   difficulty: "high" | "medium" | "low";
 }
 
-const ALL_PIS: PI[] = (rawPIs as { id: string; text: string; cluster: string; events: string[] }[]).map(
-  (pi, i) => ({
-    ...pi,
-    code: `PI-${String(i + 1).padStart(4, "0")}`,
-    category: pi.cluster,
-    difficulty: "medium" as const,
-  })
-);
+const ALL_PIS: PI[] = (
+  rawPIs as {
+    id: string;
+    text: string;
+    cluster: string;
+    events: string[];
+    instructionalArea?: string;
+    instructionalAreaCode?: string;
+  }[]
+).map((pi, i) => ({
+  ...pi,
+  instructionalArea: pi.instructionalArea ?? "",
+  instructionalAreaCode: pi.instructionalAreaCode ?? "",
+  code: `PI-${String(i + 1).padStart(4, "0")}`,
+  category: pi.instructionalArea ?? pi.cluster,
+  difficulty: "medium" as const,
+}));
 
 /**
  * Returns all PIs relevant to a given event ID.
