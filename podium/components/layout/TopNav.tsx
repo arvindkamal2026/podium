@@ -38,8 +38,27 @@ export function TopNav() {
     router.push("/login");
   }
 
+  const isGuest = user?.isAnonymous ?? false;
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 frosted-glass flex items-center justify-between px-6 h-16">
+    <>
+    {isGuest && (
+      <div className="fixed top-0 left-0 right-0 z-[60] bg-secondary-ds/10 border-b border-secondary-ds/20 px-4 py-2 flex items-center justify-between gap-3">
+        <div className="flex items-center gap-2 min-w-0">
+          <span className="material-symbols-outlined text-secondary-ds text-base flex-shrink-0">info</span>
+          <p className="text-xs text-secondary-ds truncate">
+            Guest mode — changes won&apos;t be saved
+          </p>
+        </div>
+        <button
+          onClick={() => router.push("/signup")}
+          className="flex-shrink-0 text-xs font-bold text-secondary-ds bg-secondary-ds/15 hover:bg-secondary-ds/25 px-3 py-1 rounded-lg transition-colors whitespace-nowrap"
+        >
+          Create Account
+        </button>
+      </div>
+    )}
+    <header className={`fixed left-0 right-0 z-50 frosted-glass flex items-center justify-between px-6 h-16 ${isGuest ? "top-9" : "top-0"}`}>
       <div className="flex items-center gap-2">
         <span className="material-symbols-outlined text-primary text-2xl">
           trophy
@@ -102,5 +121,6 @@ export function TopNav() {
 
       <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-outline-variant/15 to-transparent" />
     </header>
+    </>
   );
 }

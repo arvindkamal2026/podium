@@ -1,11 +1,12 @@
 import { TopNav } from "@/components/layout/TopNav";
 import { Sidebar } from "@/components/layout/Sidebar";
 import { BottomNav } from "@/components/layout/BottomNav";
+import { AppShell } from "@/components/layout/AppShell";
 import { Footer } from "@/components/layout/Footer";
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="min-h-screen">
+    <AppShell>
       <TopNav />
       <Sidebar />
       <main className="md:ml-[220px] pt-16 min-h-[calc(100vh-4rem)]">
@@ -15,6 +16,6 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         <Footer />
       </main>
       <BottomNav />
-    </div>
+    </AppShell>
   );
 }

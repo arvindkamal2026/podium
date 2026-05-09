@@ -35,6 +35,7 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [guestPrompt, setGuestPrompt] = useState(false);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -76,7 +77,20 @@ export default function LoginPage() {
     }
   }
 
-  async function handleGuest() {
+  async function handleGuestSetup() {
+    setError("");
+    setLoading(true);
+    try {
+      await signInAsGuest();
+      router.replace("/onboarding");
+    } catch (err: unknown) {
+      setError(friendlyAuthError(err));
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function handleGuestBrowse() {
     setError("");
     setLoading(true);
     try {
@@ -210,15 +224,54 @@ export default function LoginPage() {
         <div className="flex-1 h-px bg-outline-variant/20" />
       </div>
 
-      <Button
-        type="button"
-        onClick={handleGuest}
-        disabled={loading}
-        className="w-full bg-surface-container-low ghost-border hover:bg-surface-container text-outline hover:text-on-surface py-6 text-base font-semibold rounded-xl"
-      >
-        <span className="material-symbols-outlined text-lg mr-2">visibility</span>
-        Preview as Guest
-      </Button>
+      {!guestPrompt ? (
+        <Button
+          type="button"
+          onClick={() => setGuestPrompt(true)}
+          disabled={loading}
+          className="w-full bg-surface-container-low ghost-border hover:bg-surface-container text-outline hover:text-on-surface py-6 text-base font-semibold rounded-xl"
+        >
+          <span className="material-symbols-outlined text-lg mr-2">visibility</span>
+          Preview as Guest
+        </Button>
+      ) : (
+        <div className="bg-surface-container-low rounded-2xl p-5 space-y-4">
+          <div className="flex items-start gap-3">
+            <span className="material-symbols-outlined text-secondary-ds text-xl mt-0.5">info</span>
+            <p className="text-sm text-on-surface-variant leading-relaxed">
+              <span className="text-on-surface font-semibold">Changes won&apos;t be saved</span> in guest mode. Your progress, scores, and settings will be lost when you leave.
+            </p>
+          </div>
+          <p className="text-sm text-on-surface font-medium">
+            Want to set up your DECA event first for a personalised experience?
+          </p>
+          <div className="flex flex-col gap-2">
+            <Button
+              type="button"
+              onClick={handleGuestSetup}
+              disabled={loading}
+              className="w-full gradient-cta py-3 text-sm font-bold rounded-xl"
+            >
+              {loading ? "Loading..." : "Yes, set up my event"}
+            </Button>
+            <Button
+              type="button"
+              onClick={handleGuestBrowse}
+              disabled={loading}
+              className="w-full bg-surface-container hover:bg-surface-container-high text-on-surface-variant py-3 text-sm font-semibold rounded-xl"
+            >
+              {loading ? "Loading..." : "No, just browse"}
+            </Button>
+            <button
+              type="button"
+              onClick={() => setGuestPrompt(false)}
+              className="text-xs text-outline hover:text-on-surface-variant transition-colors text-center pt-1"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
