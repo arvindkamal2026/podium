@@ -18,6 +18,7 @@ interface PhoneSignInProps {
 
 function friendlyPhoneError(err: unknown): string {
   const code = (err as { code?: string })?.code;
+  console.error("[PhoneSignIn] Firebase error:", code, err);
   switch (code) {
     case "auth/invalid-phone-number":
       return "Invalid phone number. Include your country code (e.g. +1 for US).";
