@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { signUpWithEmail, signInWithEmail, signInWithGoogle, signInAsGuest } from "@/lib/firebase/auth";
 import { createGuestProfile } from "@/lib/actions/guest";
+import { PhoneSignIn } from "@/components/auth/PhoneSignIn";
 import { doc, getDoc } from "firebase/firestore";
 import { getClientDb, getClientAuth } from "@/lib/firebase/client";
 import { Button } from "@/components/ui/button";
@@ -221,6 +222,16 @@ export default function SignupPage() {
         </svg>
         Continue with Google
       </Button>
+
+      {/* Phone Sign In */}
+      <PhoneSignIn
+        onSuccess={async () => {
+          const uid = getClientAuth().currentUser?.uid;
+          const hasProfile = uid ? await userDocExists(uid) : false;
+          router.replace(hasProfile ? "/home" : "/onboarding");
+        }}
+        disabled={loading}
+      />
 
       {/* Link to login */}
       <p className="text-center text-on-surface-variant text-sm">
