@@ -279,7 +279,7 @@ export default function LandingPage() {
               <div key={step.number} className="relative">
                 {/* Connector line (not last) */}
                 {i < steps.length - 1 && (
-                  <div className="hidden md:block absolute top-6 left-full w-full h-px bg-surface-container-high -translate-x-4 z-0" />
+                  <div className="hidden md:block absolute top-6 left-full w-8 h-px bg-surface-container-high z-0" />
                 )}
 
                 <div className="relative z-10">
