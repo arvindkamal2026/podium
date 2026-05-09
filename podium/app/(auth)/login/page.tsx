@@ -4,7 +4,6 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { signInWithEmail, signInWithGoogle, signInAsGuest } from "@/lib/firebase/auth";
 import { createGuestProfile } from "@/lib/actions/guest";
-import { PhoneSignIn } from "@/components/auth/PhoneSignIn";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -193,9 +192,6 @@ export default function LoginPage() {
         </svg>
         Continue with Google
       </Button>
-
-      {/* Phone Sign In */}
-      <PhoneSignIn onSuccess={() => router.replace("/home")} disabled={loading} />
 
       {/* Link to signup */}
       <p className="text-center text-on-surface-variant text-sm">
