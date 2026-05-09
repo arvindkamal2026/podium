@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { signInWithEmail, signInWithGoogle } from "@/lib/firebase/auth";
+import { signInWithEmail, signInWithGoogle, signInAsGuest } from "@/lib/firebase/auth";
+import { createGuestProfile } from "@/lib/actions/guest";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -54,6 +55,20 @@ export default function LoginPage() {
     setLoading(true);
     try {
       await signInWithGoogle();
+      router.replace("/home");
+    } catch (err: unknown) {
+      setError(friendlyAuthError(err));
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function handleGuest() {
+    setError("");
+    setLoading(true);
+    try {
+      await signInAsGuest();
+      await createGuestProfile();
       router.replace("/home");
     } catch (err: unknown) {
       setError(friendlyAuthError(err));
@@ -161,6 +176,23 @@ export default function LoginPage() {
           Sign up
         </Link>
       </p>
+
+      {/* Guest preview */}
+      <div className="flex items-center gap-4">
+        <div className="flex-1 h-px bg-outline-variant/20" />
+        <span className="text-on-surface-variant text-xs">just browsing?</span>
+        <div className="flex-1 h-px bg-outline-variant/20" />
+      </div>
+
+      <Button
+        type="button"
+        onClick={handleGuest}
+        disabled={loading}
+        className="w-full bg-surface-container-low ghost-border hover:bg-surface-container text-outline hover:text-on-surface py-6 text-base font-semibold rounded-xl"
+      >
+        <span className="material-symbols-outlined text-lg mr-2">visibility</span>
+        Preview as Guest
+      </Button>
     </div>
   );
 }
