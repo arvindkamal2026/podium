@@ -3,14 +3,21 @@
 import { cookies } from "next/headers";
 import { getAdminAuth, getAdminDb } from "@/lib/firebase/admin";
 
-export async function createGuestProfile() {
+export async function createGuestProfile(idToken?: string) {
   const cookieStore = await cookies();
-  const session = cookieStore.get("session")?.value;
-  if (!session) return { success: false, error: "Not authenticated" };
+  let uid: string;
 
-  // Skip revocation check (false) — anonymous users can trigger false positives
-  const decodedClaims = await getAdminAuth().verifySessionCookie(session, false);
-  const uid = decodedClaims.uid;
+  if (idToken) {
+    // Verify the fresh ID token directly — avoids session cookie timing issues
+    const decoded = await getAdminAuth().verifyIdToken(idToken);
+    uid = decoded.uid;
+  } else {
+    const session = cookieStore.get("session")?.value;
+    if (!session) return { success: false, error: "Not authenticated" };
+    // Skip revocation check (false) — anonymous users can trigger false positives
+    const decoded = await getAdminAuth().verifySessionCookie(session, false);
+    uid = decoded.uid;
+  }
 
   const existing = await getAdminDb().collection("users").doc(uid).get();
   if (existing.exists) return { success: true };

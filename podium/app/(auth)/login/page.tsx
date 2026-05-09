@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { signInWithEmail, signInWithGoogle, signInAsGuest } from "@/lib/firebase/auth";
+import { getClientAuth } from "@/lib/firebase/client";
 import { createGuestProfile } from "@/lib/actions/guest";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -91,7 +92,9 @@ export default function LoginPage() {
     setLoading(true);
     try {
       await signInAsGuest();
-      const result = await createGuestProfile();
+      // Get a fresh ID token and pass it directly — avoids session cookie timing issues
+      const idToken = await getClientAuth().currentUser?.getIdToken();
+      const result = await createGuestProfile(idToken);
       if (!result.success) throw new Error("guest-profile-failed");
       router.replace("/home");
     } catch (err: unknown) {

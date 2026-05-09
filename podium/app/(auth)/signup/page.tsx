@@ -6,6 +6,7 @@ import { signUpWithEmail, signInWithEmail, signInWithGoogle, signInAsGuest } fro
 import { createGuestProfile } from "@/lib/actions/guest";
 import { doc, getDoc } from "firebase/firestore";
 import { getClientDb, getClientAuth } from "@/lib/firebase/client";
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -121,7 +122,9 @@ export default function SignupPage() {
     setLoading(true);
     try {
       await signInAsGuest();
-      const result = await createGuestProfile();
+      // Get a fresh ID token and pass it directly — avoids session cookie timing issues
+      const idToken = await getClientAuth().currentUser?.getIdToken();
+      const result = await createGuestProfile(idToken);
       if (!result.success) throw new Error("guest-profile-failed");
       router.replace("/home");
     } catch (err: unknown) {
