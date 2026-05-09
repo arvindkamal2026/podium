@@ -13,6 +13,7 @@ import Link from "next/link";
 
 function friendlyAuthError(err: unknown): string {
   const code = (err as { code?: string })?.code;
+  const message = (err as { message?: string })?.message;
   switch (code) {
     case "auth/email-already-in-use":
       return "An account with this email already exists. Please sign in.";
@@ -21,10 +22,18 @@ function friendlyAuthError(err: unknown): string {
     case "auth/invalid-email":
       return "Please enter a valid email address.";
     case "auth/popup-closed-by-user":
+    case "auth/cancelled-popup-request":
       return "Sign-in popup was closed. Please try again.";
+    case "auth/popup-blocked":
+      return "Popup was blocked by your browser. Please allow popups for this site.";
     case "auth/network-request-failed":
       return "Network error. Check your connection and try again.";
+    case "auth/operation-not-allowed":
+      return "This sign-in method is not enabled. Please contact support.";
+    case "auth/unauthorized-domain":
+      return "Sign-in is not authorised for this domain. Please contact support.";
     default:
+      if (message === "guest-profile-failed") return "Couldn't set up guest session. Please try again.";
       return "Something went wrong. Please try again.";
   }
 }
@@ -127,7 +136,8 @@ export default function SignupPage() {
     setLoading(true);
     try {
       await signInAsGuest();
-      await createGuestProfile();
+      const result = await createGuestProfile();
+      if (!result.success) throw new Error("guest-profile-failed");
       router.replace("/home");
     } catch (err: unknown) {
       setError(friendlyAuthError(err));
