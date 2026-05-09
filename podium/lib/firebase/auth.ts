@@ -4,12 +4,14 @@ import {
   signInWithPopup,
   signInAnonymously as firebaseSignInAnonymously,
   GoogleAuthProvider,
+  OAuthProvider,
   signOut as firebaseSignOut,
   type User,
 } from "firebase/auth";
 import { getClientAuth } from "./client";
 
 const googleProvider = new GoogleAuthProvider();
+const appleProvider = new OAuthProvider("apple.com");
 
 export async function signUpWithEmail(email: string, password: string) {
   const credential = await createUserWithEmailAndPassword(getClientAuth(), email, password);
@@ -25,6 +27,12 @@ export async function signInWithEmail(email: string, password: string) {
 
 export async function signInWithGoogle() {
   const credential = await signInWithPopup(getClientAuth(), googleProvider);
+  await setSessionCookie(credential.user);
+  return credential.user;
+}
+
+export async function signInWithApple() {
+  const credential = await signInWithPopup(getClientAuth(), appleProvider);
   await setSessionCookie(credential.user);
   return credential.user;
 }
