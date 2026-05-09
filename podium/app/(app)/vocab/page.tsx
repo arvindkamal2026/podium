@@ -165,7 +165,7 @@ export default function VocabPage() {
       </div>
 
       {/* Mode Selector */}
-      <div className="flex gap-2">
+      <div className="flex flex-wrap gap-2">
         {(["flashcard", "multiple-choice", "type-answer"] as StudyMode[]).map(
           (m) => (
             <button

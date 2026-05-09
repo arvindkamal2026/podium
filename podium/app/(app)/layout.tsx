@@ -1,5 +1,6 @@
 import { TopNav } from "@/components/layout/TopNav";
 import { Sidebar } from "@/components/layout/Sidebar";
+import { BottomNav } from "@/components/layout/BottomNav";
 import { Footer } from "@/components/layout/Footer";
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
@@ -7,12 +8,13 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
     <div className="min-h-screen">
       <TopNav />
       <Sidebar />
-      <main className="ml-[220px] pt-16 min-h-[calc(100vh-4rem)]">
-        <div className="p-8">
+      <main className="md:ml-[220px] pt-16 min-h-[calc(100vh-4rem)]">
+        <div className="p-4 md:p-8 pb-24 md:pb-8">
           {children}
         </div>
         <Footer />
       </main>
+      <BottomNav />
     </div>
   );
 }

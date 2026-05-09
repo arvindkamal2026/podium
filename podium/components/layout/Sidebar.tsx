@@ -27,7 +27,7 @@ export function Sidebar() {
   }
 
   return (
-    <aside className="fixed top-16 left-0 bottom-0 w-[220px] bg-surface-container-low py-6 flex flex-col gap-0.5 z-40">
+    <aside className="hidden md:flex fixed top-16 left-0 bottom-0 w-[220px] bg-surface-container-low py-6 flex-col gap-0.5 z-40">
       {NAV_ITEMS.map((item) => {
         const isActive = pathname === item.href || pathname.startsWith(item.href + "/");
         return (

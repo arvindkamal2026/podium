@@ -2,6 +2,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signInWithPopup,
+  signInAnonymously as firebaseSignInAnonymously,
   GoogleAuthProvider,
   signOut as firebaseSignOut,
   type User,
@@ -24,6 +25,12 @@ export async function signInWithEmail(email: string, password: string) {
 
 export async function signInWithGoogle() {
   const credential = await signInWithPopup(getClientAuth(), googleProvider);
+  await setSessionCookie(credential.user);
+  return credential.user;
+}
+
+export async function signInAsGuest() {
+  const credential = await firebaseSignInAnonymously(getClientAuth());
   await setSessionCookie(credential.user);
   return credential.user;
 }
