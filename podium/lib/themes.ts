@@ -40,6 +40,14 @@ export const THEMES: ThemePreset[] = [
     swatches: ["#0b1e0d", "#F8BC16", "#4edea5", "#132c15"],
     variantOf: "prosper-eagles",
   },
+  {
+    id: "richland-raiders-dark",
+    label: "Richland Raiders Dark",
+    description: "Deep purple & lavender. Dark variant.",
+    mode: "dark",
+    swatches: ["#0d0810", "#D4B8E0", "#6b3fa0", "#1a0d2e"],
+    variantOf: "richland-raiders",
+  },
 ];
 
 export const DEFAULT_THEME = "podium-default";
