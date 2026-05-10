@@ -32,6 +32,12 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "No file provided" }, { status: 400 });
   }
 
+  // Server-side size guard (mirrors client-side 5 MB cap)
+  const MAX_BYTES = 5 * 1024 * 1024;
+  if ((file as File).size > MAX_BYTES) {
+    return NextResponse.json({ error: "File too large. Maximum size is 5 MB." }, { status: 413 });
+  }
+
   // Convert to Buffer
   const arrayBuffer = await (file as File).arrayBuffer();
   const buffer = Buffer.from(arrayBuffer);
@@ -43,7 +49,7 @@ export async function POST(request: NextRequest) {
     // eslint-disable-next-line @typescript-eslint/no-require-imports
     const pdfParse = require("pdf-parse/lib/pdf-parse.js");
     const data = await pdfParse(buffer);
-    pdfText = data.text as string;
+    pdfText = typeof data.text === "string" ? data.text : "";
   } catch {
     return NextResponse.json(
       {
