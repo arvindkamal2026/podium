@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { useAuth } from "@/lib/hooks/useAuth";
 import { useDocument } from "@/lib/hooks/useFirestore";
 import { signOut } from "@/lib/firebase/auth";
@@ -50,12 +51,12 @@ export function TopNav() {
             Guest mode — changes won&apos;t be saved
           </p>
         </div>
-        <button
-          onClick={() => router.push("/signup")}
+        <Link
+          href="/signup"
           className="flex-shrink-0 text-xs font-bold text-secondary-ds bg-secondary-ds/15 hover:bg-secondary-ds/25 px-3 py-1 rounded-lg transition-colors whitespace-nowrap"
         >
           Create Account
-        </button>
+        </Link>
       </div>
     )}
     <header className={`fixed left-0 right-0 z-50 frosted-glass flex items-center justify-between px-6 h-16 ${isGuest ? "top-9" : "top-0"}`}>
