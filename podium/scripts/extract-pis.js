@@ -106,10 +106,12 @@ function extractJumpstartPIs(rawText) {
 const HEADER_RE = /^Performance Indicators?:\s*$/i;
 // Corrupted OCR / font-encoding artefacts found in Jump$tart PDFs
 const ARTEFACT_RE = /\d+Ster|\bED3\b|23Ster/;
+// Matches "Instructional Area: Business Law (BL)"
+const IA_HEADER_RE = /^Instructional Area:\s+(.+?)\s+\(([A-Z]{2})\)\s*$/i;
 
 /**
  * Extract all PIs from the raw text of one DECA PI PDF.
- * Returns an array of clean PI text strings (no code/level tags).
+ * Returns an array of objects with text, instructionalArea, and instructionalAreaCode.
  */
 function extractPIs(rawText) {
   const normalized = rawText.replace(/\r\n/g, "\n").replace(/\f/g, "\n");
@@ -119,31 +121,36 @@ function extractPIs(rawText) {
     .filter((l) => l.length > 0);
 
   const results = [];
-  let pending = null; // holds partial first line of a wrapped PI
+  let pending = null;
+  let currentIA = "";
+  let currentIACode = "";
 
   for (const line of lines) {
+    const iaMatch = line.match(IA_HEADER_RE);
+    if (iaMatch) {
+      currentIA = iaMatch[1].trim();
+      currentIACode = iaMatch[2];
+      pending = null;
+      continue;
+    }
+
     if (pending !== null) {
-      // Try to complete the pending partial line
       const combined = pending + " " + line;
       const m = combined.match(COMPLETE_PI_RE);
       if (m) {
-        results.push(m[1].trim());
+        results.push({ text: m[1].trim(), instructionalArea: currentIA, instructionalAreaCode: currentIACode });
         pending = null;
         continue;
       }
-      // If still no match after combining, discard the pending fragment
       pending = null;
     }
 
     const m = line.match(COMPLETE_PI_RE);
     if (m) {
-      results.push(m[1].trim());
+      results.push({ text: m[1].trim(), instructionalArea: currentIA, instructionalAreaCode: currentIACode });
       continue;
     }
 
-    // Check if this looks like the start of a wrapped PI:
-    // — contains at least one verb-like word (lowercase), no trailing tag yet,
-    //   and is at least 10 chars long, and is not a section header
     if (
       line.length >= 10 &&
       /[a-z]/.test(line) &&
@@ -154,12 +161,14 @@ function extractPIs(rawText) {
     }
   }
 
-  // Filter out section header lines and artefacts that leaked through
-  const clean = results.filter((t) => !HEADER_RE.test(t) && !ARTEFACT_RE.test(t));
+  const clean = results.filter((pi) => !HEADER_RE.test(pi.text) && !ARTEFACT_RE.test(pi.text));
 
-  // If the standard DECA format found nothing, try Jump$tart / National Standards format
   if (clean.length === 0) {
-    return extractJumpstartPIs(normalized);
+    return extractJumpstartPIs(normalized).map((text) => ({
+      text,
+      instructionalArea: "",
+      instructionalAreaCode: "",
+    }));
   }
 
   return clean;
@@ -206,14 +215,16 @@ async function main() {
     const piTexts = extractPIs(parsed.text);
     console.log(`  Extracted ${piTexts.length} performance indicators.`);
 
-    for (const text of piTexts) {
-      const cleaned = text.replace(/\s+/g, " ").trim();
+    for (const pi of piTexts) {
+      const cleaned = pi.text.replace(/\s+/g, " ").trim();
       if (cleaned.length < 10) continue;
 
       allPIs.push({
         id: crypto.randomUUID(),
         text: cleaned,
         cluster,
+        instructionalArea: pi.instructionalArea,
+        instructionalAreaCode: pi.instructionalAreaCode,
         events: [],
       });
     }
