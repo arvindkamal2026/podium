@@ -40,6 +40,29 @@ export const THEMES: ThemePreset[] = [
     swatches: ["#0b1e0d", "#F8BC16", "#4edea5", "#132c15"],
     variantOf: "prosper-eagles",
   },
+  {
+    id: "rock-hill-hawks",
+    label: "Rock Hill Hawks",
+    description: "Electric blue and black. Rock Hill Hawks spirit colors.",
+    mode: "light",
+    swatches: ["#1A8BBE", "#0D0D0D", "#D6EEF8", "#FFFFFF"],
+  },
+  {
+    id: "rock-hill-hawks-dark",
+    label: "Rock Hill Hawks (Dark)",
+    description: "Deep navy blacks with electric blue. Rock Hill Hawks spirit colors.",
+    mode: "dark",
+    swatches: ["#1A8BBE", "#3DB8F5", "#0E2A3A", "#0D0F11"],
+    variantOf: "rock-hill-hawks",
+  },
+  {
+    id: "richland-raiders-dark",
+    label: "Richland Raiders Dark",
+    description: "Deep purple & lavender. Dark variant.",
+    mode: "dark",
+    swatches: ["#0d0810", "#D4B8E0", "#6b3fa0", "#1a0d2e"],
+    variantOf: "richland-raiders",
+  },
 ];
 
 export const DEFAULT_THEME = "podium-default";

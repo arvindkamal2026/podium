@@ -37,8 +37,8 @@ export function Sidebar() {
             href={item.href}
             className={`flex items-center gap-3 px-6 py-2.5 text-sm font-medium transition-all duration-200 border-l-[3px] ${
               isActive
-                ? "text-primary bg-primary/[0.04] border-l-primary"
-                : "text-outline hover:text-on-surface-variant hover:bg-white/[0.08] border-l-transparent"
+                ? "text-nav-active bg-nav-active/[0.08] border-l-nav-active"
+                : "text-nav-text hover:text-on-surface-variant hover:bg-white/[0.08] border-l-transparent"
             }`}
           >
             <span className="material-symbols-outlined text-xl">
@@ -59,8 +59,8 @@ export function Sidebar() {
             href={item.href}
             className={`flex items-center gap-3 px-6 py-2.5 text-sm font-medium transition-all duration-200 border-l-[3px] ${
               isActive
-                ? "text-primary bg-primary/[0.04] border-l-primary"
-                : "text-outline hover:text-on-surface-variant hover:bg-white/[0.08] border-l-transparent"
+                ? "text-nav-active bg-nav-active/[0.08] border-l-nav-active"
+                : "text-nav-text hover:text-on-surface-variant hover:bg-white/[0.08] border-l-transparent"
             }`}
           >
             <span className="material-symbols-outlined text-xl">
