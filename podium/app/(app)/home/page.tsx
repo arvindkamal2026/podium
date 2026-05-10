@@ -1,7 +1,9 @@
 "use client";
 
+import { useEffect } from "react";
 import { useAuth } from "@/lib/hooks/useAuth";
 import { useDocument } from "@/lib/hooks/useFirestore";
+import { createGuestProfile } from "@/lib/actions/guest";
 import { CountdownTimer } from "@/components/dashboard/CountdownTimer";
 import { MasteryRing } from "@/components/dashboard/MasteryRing";
 import { StreakTracker } from "@/components/dashboard/StreakTracker";
@@ -34,6 +36,14 @@ export default function DashboardPage() {
   const { data: profile, loading: profileLoading } = useDocument<UserProfile>(
     user ? `users/${user.uid}` : null
   );
+
+  // If an anonymous user lands here without a profile (profile creation may have
+  // failed or been skipped), create it now using their fresh ID token.
+  useEffect(() => {
+    if (!profileLoading && !profile && user?.isAnonymous) {
+      user.getIdToken().then((idToken) => createGuestProfile(idToken)).catch(() => {});
+    }
+  }, [profile, profileLoading, user]);
 
   if (authLoading || profileLoading) {
     return (
