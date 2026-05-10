@@ -48,51 +48,55 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 
   /* Design System: Executive Brutalism - Custom Color Tokens */
-  --color-surface: #131313;
-  --color-surface-dim: #131313;
-  --color-surface-bright: #3a3939;
-  --color-surface-container-lowest: #0e0e0e;
-  --color-surface-container-low: #1c1b1b;
-  --color-surface-container: #201f1f;
-  --color-surface-container-high: #2a2a2a;
-  --color-surface-container-highest: #353534;
-  --color-surface-variant: #353534;
-  --color-surface-tint: #adc6ff;
-  --color-primary-container: #4d8eff;
-  --color-primary-fixed: #d8e2ff;
-  --color-primary-fixed-dim: #adc6ff;
-  --color-on-primary: #002e6a;
-  --color-on-primary-container: #00285d;
-  --color-on-primary-fixed: #001a42;
-  --color-on-primary-fixed-variant: #004395;
-  --color-inverse-primary: #005ac2;
-  --color-secondary-ds: #ffb95f;
-  --color-secondary-container: #ee9800;
-  --color-secondary-fixed: #ffddb8;
-  --color-secondary-fixed-dim: #ffb95f;
-  --color-on-secondary: #472a00;
-  --color-on-secondary-container: #5b3800;
-  --color-on-secondary-fixed: #2a1700;
-  --color-on-secondary-fixed-variant: #653e00;
-  --color-tertiary: #4edea5;
-  --color-tertiary-container: #00a574;
-  --color-tertiary-fixed: #6ffbc0;
-  --color-tertiary-fixed-dim: #4edea5;
-  --color-on-tertiary: #003825;
-  --color-on-tertiary-container: #003120;
-  --color-on-tertiary-fixed: #002114;
-  --color-on-tertiary-fixed-variant: #005137;
-  --color-error: #ffb4ab;
-  --color-error-container: #93000a;
-  --color-on-error: #690005;
-  --color-on-error-container: #ffdad6;
-  --color-on-surface: #e5e2e1;
-  --color-on-surface-variant: #c2c6d6;
-  --color-on-background: #e5e2e1;
-  --color-outline: #8c909f;
-  --color-outline-variant: #424754;
-  --color-inverse-surface: #e5e2e1;
-  --color-inverse-on-surface: #313030;
+  --color-surface: var(--ds-surface);
+  --color-surface-dim: var(--ds-surface-dim);
+  --color-surface-bright: var(--ds-surface-bright);
+  --color-surface-container-lowest: var(--ds-surface-container-lowest);
+  --color-surface-container-low: var(--ds-surface-container-low);
+  --color-surface-container: var(--ds-surface-container);
+  --color-surface-container-high: var(--ds-surface-container-high);
+  --color-surface-container-highest: var(--ds-surface-container-highest);
+  --color-surface-variant: var(--ds-surface-variant);
+  --color-surface-tint: var(--ds-surface-tint);
+  --color-primary-container: var(--ds-primary-container);
+  --color-primary-fixed: var(--ds-primary-fixed);
+  --color-primary-fixed-dim: var(--ds-primary-fixed-dim);
+  --color-on-primary: var(--ds-on-primary);
+  --color-on-primary-container: var(--ds-on-primary-container);
+  --color-on-primary-fixed: var(--ds-on-primary-fixed);
+  --color-on-primary-fixed-variant: var(--ds-on-primary-fixed-variant);
+  --color-inverse-primary: var(--ds-inverse-primary);
+  --color-secondary-ds: var(--ds-secondary);
+  --color-secondary-container: var(--ds-secondary-container);
+  --color-secondary-fixed: var(--ds-secondary-fixed);
+  --color-secondary-fixed-dim: var(--ds-secondary-fixed-dim);
+  --color-on-secondary: var(--ds-on-secondary);
+  --color-on-secondary-container: var(--ds-on-secondary-container);
+  --color-on-secondary-fixed: var(--ds-on-secondary-fixed);
+  --color-on-secondary-fixed-variant: var(--ds-on-secondary-fixed-variant);
+  --color-tertiary: var(--ds-tertiary);
+  --color-tertiary-container: var(--ds-tertiary-container);
+  --color-tertiary-fixed: var(--ds-tertiary-fixed);
+  --color-tertiary-fixed-dim: var(--ds-tertiary-fixed-dim);
+  --color-on-tertiary: var(--ds-on-tertiary);
+  --color-on-tertiary-container: var(--ds-on-tertiary-container);
+  --color-on-tertiary-fixed: var(--ds-on-tertiary-fixed);
+  --color-on-tertiary-fixed-variant: var(--ds-on-tertiary-fixed-variant);
+  --color-error: var(--ds-error);
+  --color-error-container: var(--ds-error-container);
+  --color-on-error: var(--ds-on-error);
+  --color-on-error-container: var(--ds-on-error-container);
+  --color-on-surface: var(--ds-on-surface);
+  --color-on-surface-variant: var(--ds-on-surface-variant);
+  --color-on-background: var(--ds-on-background);
+  --color-outline: var(--ds-outline);
+  --color-outline-variant: var(--ds-outline-variant);
+  --color-inverse-surface: var(--ds-inverse-surface);
+  --color-inverse-on-surface: var(--ds-inverse-on-surface);
+
+  /* Nav-specific tokens — sidebar active/inactive text colors, decoupled from content-area primary/outline */
+  --color-nav-active: var(--ds-nav-active);
+  --color-nav-text: var(--ds-nav-text);
 
   /* Design System: Font Families */
   --font-headline: var(--font-headline), "Plus Jakarta Sans", sans-serif;
@@ -101,12 +105,12 @@
 }
 
 /* ─── Theme token layer ─────────────────────────────────────────────────── */
-/* Components reference these; each [data-theme] block overrides them.       */
-/* Adding a new theme requires only: (1) a [data-theme] block here,          */
-/* (2) a new object in lib/themes.ts.                                         */
+/* :root is the dark fallback. [data-theme] blocks override per-theme.        */
+/* Adding a new theme: one [data-theme] block here + one object in themes.ts. */
 
 :root,
 [data-theme="podium-default"] {
+  /* Simple theme tokens (used by theme-aware components) */
   --color-primary: #4D8EFF;
   --color-primary-soft: #ADC6FF;
   --color-accent: #FFB95F;
@@ -116,21 +120,476 @@
   --color-text: #f0f0f0;
   --color-text-muted: #888;
   --color-border: rgba(255, 255, 255, 0.08);
+
+  /* Nav surface — sidebar + frosted-glass top nav background */
+  --ds-surface-nav: #1c1b1b;
+
+  /* Nav text tokens */
+  --ds-nav-active: #4D8EFF;
+  --ds-nav-text: #8c909f;
+
+  /* Full design-system slots — identical to current hardcoded values */
+  --ds-surface: #131313;
+  --ds-surface-dim: #131313;
+  --ds-surface-bright: #3a3939;
+  --ds-surface-container-lowest: #0e0e0e;
+  --ds-surface-container-low: #1c1b1b;
+  --ds-surface-container: #201f1f;
+  --ds-surface-container-high: #2a2a2a;
+  --ds-surface-container-highest: #353534;
+  --ds-surface-variant: #353534;
+  --ds-surface-tint: #adc6ff;
+  --ds-primary-container: #4d8eff;
+  --ds-primary-fixed: #d8e2ff;
+  --ds-primary-fixed-dim: #adc6ff;
+  --ds-on-primary: #002e6a;
+  --ds-on-primary-container: #00285d;
+  --ds-on-primary-fixed: #001a42;
+  --ds-on-primary-fixed-variant: #004395;
+  --ds-inverse-primary: #005ac2;
+  --ds-secondary: #ffb95f;
+  --ds-secondary-container: #ee9800;
+  --ds-secondary-fixed: #ffddb8;
+  --ds-secondary-fixed-dim: #ffb95f;
+  --ds-on-secondary: #472a00;
+  --ds-on-secondary-container: #5b3800;
+  --ds-on-secondary-fixed: #2a1700;
+  --ds-on-secondary-fixed-variant: #653e00;
+  --ds-tertiary: #4edea5;
+  --ds-tertiary-container: #00a574;
+  --ds-tertiary-fixed: #6ffbc0;
+  --ds-tertiary-fixed-dim: #4edea5;
+  --ds-on-tertiary: #003825;
+  --ds-on-tertiary-container: #003120;
+  --ds-on-tertiary-fixed: #002114;
+  --ds-on-tertiary-fixed-variant: #005137;
+  --ds-error: #ffb4ab;
+  --ds-error-container: #93000a;
+  --ds-on-error: #690005;
+  --ds-on-error-container: #ffdad6;
+  --ds-on-surface: #e5e2e1;
+  --ds-on-surface-variant: #c2c6d6;
+  --ds-on-background: #e5e2e1;
+  --ds-outline: #8c909f;
+  --ds-outline-variant: #424754;
+  --ds-inverse-surface: #e5e2e1;
+  --ds-inverse-on-surface: #313030;
   color-scheme: dark;
 }
 
 [data-theme="prosper-eagles"] {
-  --color-primary: #204321;
-  --color-primary-soft: #2e5e30;
-  --color-accent: #F8BC16;
-  --color-accent-contrast: #000000;
+  /* Simple theme tokens */
+  /* Primary is gold so active nav items are readable on the dark green sidebar */
+  --color-primary: #F8BC16;
+  --primary: #F8BC16;
+  --color-primary-soft: #ffd966;
+  --color-accent: #204321;
+  --color-accent-contrast: #ffffff;
+  --color-surface: #f5f5f0;
+  --color-surface-secondary: #e8f0e9;
+  --color-surface-tertiary: #dde8de;
+  --color-text: #111a12;
+  --color-text-muted: #4a6b4d;
+  --color-border: rgba(32, 67, 33, 0.1);
+
+  /* Nav surface — dark green for sidebar + top nav */
+  --ds-surface-nav: #1a3520;
+
+  /* Nav text tokens */
+  --ds-nav-active: #F8BC16;
+  --ds-nav-text: #a0c8a5;
+
+  /* Full design-system slots — light palette with green tint */
+  --ds-surface: #f5f5f0;
+  --ds-surface-dim: #e8ece8;
+  --ds-surface-bright: #ffffff;
+  --ds-surface-container-lowest: #ffffff;
+  --ds-surface-container-low: #edf5ee;        /* cards/sections (light green) */
+  --ds-surface-container: #e4ede5;
+  --ds-surface-container-high: #dae7db;
+  --ds-surface-container-highest: #cfd8d0;
+  --ds-surface-variant: #cfd8d0;
+  --ds-surface-tint: #204321;
+  --ds-primary-container: #204321;            /* CTA gradient stays deep green */
+  --ds-primary-fixed: #c8e6c9;
+  --ds-primary-fixed-dim: #2e5e30;
+  --ds-on-primary: #000000;                   /* black text on gold primary */
+  --ds-on-primary-container: #ffffff;
+  --ds-on-primary-fixed: #ffffff;
+  --ds-on-primary-fixed-variant: #e8f5e9;
+  --ds-inverse-primary: #4caf50;
+  --ds-secondary: #F8BC16;
+  --ds-secondary-container: #e6a800;
+  --ds-secondary-fixed: #fff3cd;
+  --ds-secondary-fixed-dim: #F8BC16;
+  --ds-on-secondary: #000000;
+  --ds-on-secondary-container: #000000;
+  --ds-on-secondary-fixed: #000000;
+  --ds-on-secondary-fixed-variant: #3d2f00;
+  --ds-tertiary: #2e7d32;
+  --ds-tertiary-container: #388e3c;
+  --ds-tertiary-fixed: #a5d6a7;
+  --ds-tertiary-fixed-dim: #2e7d32;
+  --ds-on-tertiary: #ffffff;
+  --ds-on-tertiary-container: #ffffff;
+  --ds-on-tertiary-fixed: #ffffff;
+  --ds-on-tertiary-fixed-variant: #e8f5e9;
+  --ds-error: #b00020;
+  --ds-error-container: #fde0e0;
+  --ds-on-error: #ffffff;
+  --ds-on-error-container: #7f0013;
+  --ds-on-surface: #111a12;
+  --ds-on-surface-variant: #a0c8a5;           /* readable on both dark nav and light cards */
+  --ds-on-background: #111a12;
+  --ds-outline: #7aad7f;                      /* ~5:1 contrast on dark nav, muted on light bg */
+  --ds-outline-variant: #c5d8c6;
+  --ds-inverse-surface: #111a12;
+  --ds-inverse-on-surface: #f5f5f0;
+  color-scheme: light;
+}
+
+[data-theme="richland-raiders"] {
+  /* Simple theme tokens */
+  /* Primary is deep purple — visible on light lavender cards. Nav uses --ds-nav-active (lavender) for the black sidebar. */
+  --color-primary: #4D1979;
+  --primary: #4D1979;
+  --color-primary-soft: #6b3fa0;
+  --color-accent: #D4B8E0;
+  --color-accent-contrast: #4D1979;
   --color-surface: #ffffff;
-  --color-surface-secondary: #E9EDEF;
-  --color-surface-tertiary: #f0f0f0;
+  --color-surface-secondary: #EDE0F5;
+  --color-surface-tertiary: #f5eeff;
   --color-text: #1a1a1a;
   --color-text-muted: #555;
-  --color-border: rgba(0, 0, 0, 0.1);
+  --color-border: rgba(77, 25, 121, 0.15);
+
+  /* Nav surface — black nav bar + sidebar (Raiders site signature) */
+  --ds-surface-nav: #000000;
+
+  /* Nav text tokens — lavender active, medium purple inactive (both readable on black) */
+  --ds-nav-active: #D4B8E0;
+  --ds-nav-text: #9f7abf;
+
+  /* Full design-system slots */
+  --ds-surface: #ffffff;
+  --ds-surface-dim: #f5f0fa;
+  --ds-surface-bright: #ffffff;
+  --ds-surface-container-lowest: #ffffff;
+  --ds-surface-container-low: #f0e8f8;        /* cards — very light lavender */
+  --ds-surface-container: #e8ddf5;
+  --ds-surface-container-high: #ddd0ee;
+  --ds-surface-container-highest: #d4c4e8;
+  --ds-surface-variant: #EDE0F5;
+  --ds-surface-tint: #4D1979;
+  --ds-primary-container: #4D1979;            /* CTA gradient: deep purple */
+  --ds-primary-fixed: #EDE0F5;
+  --ds-primary-fixed-dim: #D4B8E0;            /* CTA gradient: lavender */
+  --ds-on-primary: #ffffff;
+  --ds-on-primary-container: #ffffff;
+  --ds-on-primary-fixed: #4D1979;
+  --ds-on-primary-fixed-variant: #6b3fa0;
+  --ds-inverse-primary: #D4B8E0;
+  --ds-secondary: #D4B8E0;
+  --ds-secondary-container: #c0a0d0;
+  --ds-secondary-fixed: #f5eeff;
+  --ds-secondary-fixed-dim: #D4B8E0;
+  --ds-on-secondary: #1a1a1a;
+  --ds-on-secondary-container: #1a1a1a;
+  --ds-on-secondary-fixed: #4D1979;
+  --ds-on-secondary-fixed-variant: #1a1a1a;
+  --ds-tertiary: #000000;
+  --ds-tertiary-container: #1a1a1a;
+  --ds-tertiary-fixed: #333333;
+  --ds-tertiary-fixed-dim: #1a1a1a;
+  --ds-on-tertiary: #ffffff;
+  --ds-on-tertiary-container: #ffffff;
+  --ds-on-tertiary-fixed: #ffffff;
+  --ds-on-tertiary-fixed-variant: #D4B8E0;
+  --ds-error: #b00020;
+  --ds-error-container: #fde0e0;
+  --ds-on-error: #ffffff;
+  --ds-on-error-container: #7f0013;
+  --ds-on-surface: #1a1a1a;
+  --ds-on-surface-variant: #c4a8d8;           /* readable on black nav, soft on white */
+  --ds-on-background: #1a1a1a;
+  --ds-outline: #6b3fa0;                      /* dark purple — ~4.5:1 on light lavender cards */
+  --ds-outline-variant: #d4c0e8;              /* soft lavender dividers on content */
+  --ds-inverse-surface: #1a1a1a;
+  --ds-inverse-on-surface: #ffffff;
   color-scheme: light;
+}
+
+[data-theme="prosper-eagles-dark"] {
+  /* Simple theme tokens */
+  --color-primary: #F8BC16;
+  --primary: #F8BC16;
+  --color-primary-soft: #ffd966;
+  --color-accent: #4edea5;
+  --color-surface: #0b1e0d;
+  --ds-surface-nav: #0f2410;
+
+  /* Nav text tokens */
+  --ds-nav-active: #F8BC16;
+  --ds-nav-text: #7aad7f;
+
+  --color-surface-secondary: #132c15;
+  --color-surface-tertiary: #070f08;
+  --color-text: #e0f2e1;
+  --color-text-muted: #7aad7f;
+  --color-border: rgba(248, 188, 22, 0.08);
+
+  /* Full design-system slots — full dark forest green */
+  --ds-surface: #0b1e0d;
+  --ds-surface-dim: #091509;
+  --ds-surface-bright: #1a3520;
+  --ds-surface-container-lowest: #070f08;
+  --ds-surface-container-low: #0f2410;
+  --ds-surface-container: #132c15;
+  --ds-surface-container-high: #1a3520;
+  --ds-surface-container-highest: #204321;
+  --ds-surface-variant: #1e3d20;
+  --ds-surface-tint: #F8BC16;
+  --ds-primary-container: #F8BC16;
+  --ds-primary-fixed: #fff3cd;
+  --ds-primary-fixed-dim: #F8BC16;
+  --ds-on-primary: #1a0f00;
+  --ds-on-primary-container: #000000;
+  --ds-on-primary-fixed: #000000;
+  --ds-on-primary-fixed-variant: #2a1f00;
+  --ds-inverse-primary: #e6a800;
+  --ds-secondary: #4edea5;
+  --ds-secondary-container: #00a574;
+  --ds-secondary-fixed: #6ffbc0;
+  --ds-secondary-fixed-dim: #4edea5;
+  --ds-on-secondary: #003825;
+  --ds-on-secondary-container: #003120;
+  --ds-on-secondary-fixed: #002114;
+  --ds-on-secondary-fixed-variant: #005137;
+  --ds-tertiary: #F8BC16;
+  --ds-tertiary-container: #e6a800;
+  --ds-tertiary-fixed: #fff3cd;
+  --ds-tertiary-fixed-dim: #F8BC16;
+  --ds-on-tertiary: #000000;
+  --ds-on-tertiary-container: #000000;
+  --ds-on-tertiary-fixed: #000000;
+  --ds-on-tertiary-fixed-variant: #2a1f00;
+  --ds-error: #ffb4ab;
+  --ds-error-container: #93000a;
+  --ds-on-error: #690005;
+  --ds-on-error-container: #ffdad6;
+  --ds-on-surface: #e0f2e1;
+  --ds-on-surface-variant: #9bc99f;
+  --ds-on-background: #e0f2e1;
+  --ds-outline: #7aad7f;
+  --ds-outline-variant: #1e3d20;
+  --ds-inverse-surface: #e0f2e1;
+  --ds-inverse-on-surface: #0b1e0d;
+  color-scheme: dark;
+}
+
+[data-theme="rock-hill-hawks"] {
+  --color-primary: #1A8BBE;
+  --primary: #1A8BBE;
+  --color-primary-soft: #D6EEF8;
+  --color-accent: #0D0D0D;
+  --color-accent-contrast: #FFFFFF;
+  --color-surface: #FFFFFF;
+  --color-surface-secondary: #F4F6F8;
+  --color-surface-tertiary: #E8EEF2;
+  --color-text: #1A1A1A;
+  --color-text-muted: #6B7280;
+  --color-border: rgba(26, 139, 190, 0.18);
+
+  /* Nav surface — black bar matches Rock Hill Hawks site */
+  --ds-surface-nav: #0D0D0D;
+
+  /* Nav text tokens — blue readable on black */
+  --ds-nav-active: #1A8BBE;
+  --ds-nav-text: #7a9ab5;
+
+  --ds-surface: #FFFFFF;
+  --ds-surface-dim: #F0F4F8;
+  --ds-surface-bright: #FFFFFF;
+  --ds-surface-container-lowest: #FFFFFF;
+  --ds-surface-container-low: #EEF4F8;
+  --ds-surface-container: #E2EDF4;
+  --ds-surface-container-high: #D6E6EF;
+  --ds-surface-container-highest: #C8DCEA;
+  --ds-surface-variant: #D6EEF8;
+  --ds-surface-tint: #1A8BBE;
+  --ds-primary-container: #1A8BBE;
+  --ds-primary-fixed: #D6EEF8;
+  --ds-primary-fixed-dim: #8ACAE0;
+  --ds-on-primary: #FFFFFF;
+  --ds-on-primary-container: #FFFFFF;
+  --ds-on-primary-fixed: #1A8BBE;
+  --ds-on-primary-fixed-variant: #0D5C82;
+  --ds-inverse-primary: #D6EEF8;
+  --ds-secondary: #0D0D0D;
+  --ds-secondary-container: #333333;
+  --ds-secondary-fixed: #E8E8E8;
+  --ds-secondary-fixed-dim: #0D0D0D;
+  --ds-on-secondary: #FFFFFF;
+  --ds-on-secondary-container: #FFFFFF;
+  --ds-on-secondary-fixed: #FFFFFF;
+  --ds-on-secondary-fixed-variant: #F0F0F0;
+  --ds-tertiary: #0D5C82;
+  --ds-tertiary-container: #1A8BBE;
+  --ds-tertiary-fixed: #D6EEF8;
+  --ds-tertiary-fixed-dim: #1A8BBE;
+  --ds-on-tertiary: #FFFFFF;
+  --ds-on-tertiary-container: #FFFFFF;
+  --ds-on-tertiary-fixed: #FFFFFF;
+  --ds-on-tertiary-fixed-variant: #D6EEF8;
+  --ds-error: #b00020;
+  --ds-error-container: #fde0e0;
+  --ds-on-error: #ffffff;
+  --ds-on-error-container: #7f0013;
+  --ds-on-surface: #1A1A1A;
+  --ds-on-surface-variant: #4A6A80;
+  --ds-on-background: #1A1A1A;
+  --ds-outline: #4A6A80;
+  --ds-outline-variant: #C0D8E8;
+  --ds-inverse-surface: #1A1A1A;
+  --ds-inverse-on-surface: #FFFFFF;
+  color-scheme: light;
+}
+
+[data-theme="rock-hill-hawks-dark"] {
+  --color-primary: #1A8BBE;
+  --primary: #1A8BBE;
+  --color-primary-soft: #0E2A3A;
+  --color-accent: #3DB8F5;
+  --color-accent-contrast: #0D0F11;
+  --color-surface: #0D0F11;
+  --color-surface-secondary: #151A1F;
+  --color-surface-tertiary: #1C2329;
+  --color-text: #E8EFF4;
+  --color-text-muted: #7A8FA0;
+  --color-border: rgba(26, 139, 190, 0.22);
+
+  /* Nav surface — darker than content surface */
+  --ds-surface-nav: #090C0F;
+
+  /* Nav text tokens — bright blue active, muted slate inactive */
+  --ds-nav-active: #3DB8F5;
+  --ds-nav-text: #7A8FA0;
+
+  --ds-surface: #0D0F11;
+  --ds-surface-dim: #0A0C0E;
+  --ds-surface-bright: #1C2329;
+  --ds-surface-container-lowest: #070A0C;
+  --ds-surface-container-low: #151A1F;
+  --ds-surface-container: #1C2329;
+  --ds-surface-container-high: #232C34;
+  --ds-surface-container-highest: #2B3540;
+  --ds-surface-variant: #1C2329;
+  --ds-surface-tint: #1A8BBE;
+  --ds-primary-container: #1A8BBE;
+  --ds-primary-fixed: #D6EEF8;
+  --ds-primary-fixed-dim: #3DB8F5;
+  --ds-on-primary: #0D0F11;
+  --ds-on-primary-container: #E8F4FA;
+  --ds-on-primary-fixed: #0D0F11;
+  --ds-on-primary-fixed-variant: #1C2329;
+  --ds-inverse-primary: #1A8BBE;
+  --ds-secondary: #3DB8F5;
+  --ds-secondary-container: #1A8BBE;
+  --ds-secondary-fixed: #D6EEF8;
+  --ds-secondary-fixed-dim: #3DB8F5;
+  --ds-on-secondary: #0D0F11;
+  --ds-on-secondary-container: #E8F4FA;
+  --ds-on-secondary-fixed: #0D0F11;
+  --ds-on-secondary-fixed-variant: #151A1F;
+  --ds-tertiary: #8ACAE0;
+  --ds-tertiary-container: #0D5C82;
+  --ds-tertiary-fixed: #D6EEF8;
+  --ds-tertiary-fixed-dim: #8ACAE0;
+  --ds-on-tertiary: #0D0F11;
+  --ds-on-tertiary-container: #E8F4FA;
+  --ds-on-tertiary-fixed: #0D0F11;
+  --ds-on-tertiary-fixed-variant: #151A1F;
+  --ds-error: #ffb4ab;
+  --ds-error-container: #93000a;
+  --ds-on-error: #690005;
+  --ds-on-error-container: #ffdad6;
+  --ds-on-surface: #E8EFF4;
+  --ds-on-surface-variant: #8ACAE0;
+  --ds-on-background: #E8EFF4;
+  --ds-outline: #7A8FA0;
+  --ds-outline-variant: #1C2329;
+  --ds-inverse-surface: #E8EFF4;
+  --ds-inverse-on-surface: #0D0F11;
+  color-scheme: dark;
+}
+
+[data-theme="richland-raiders-dark"] {
+  /* Simple theme tokens */
+  --color-primary: #D4B8E0;
+  --primary: #D4B8E0;
+  --color-primary-soft: #e8d8f0;
+  --color-accent: #6b3fa0;
+  --color-surface: #0d0810;
+  --color-surface-secondary: #1a0d2e;
+  --color-surface-tertiary: #0a0510;
+  --color-text: #f0e8f8;
+  --color-text-muted: #c4a8d8;
+  --color-border: rgba(212, 184, 224, 0.08);
+
+  /* Nav surface — deep purple sidebar */
+  --ds-surface-nav: #1a0d2e;
+
+  /* Nav text tokens */
+  --ds-nav-active: #D4B8E0;
+  --ds-nav-text: #9f7abf;
+
+  /* Full design-system slots — dark purple palette */
+  --ds-surface: #0d0810;
+  --ds-surface-dim: #090508;
+  --ds-surface-bright: #2a1a3d;
+  --ds-surface-container-lowest: #070309;
+  --ds-surface-container-low: #130a1e;
+  --ds-surface-container: #1a0d2e;
+  --ds-surface-container-high: #241640;
+  --ds-surface-container-highest: #2e1e52;
+  --ds-surface-variant: #2a1a3d;
+  --ds-surface-tint: #D4B8E0;
+  --ds-primary-container: #6b3fa0;
+  --ds-primary-fixed: #EDE0F5;
+  --ds-primary-fixed-dim: #D4B8E0;
+  --ds-on-primary: #1a0d2e;
+  --ds-on-primary-container: #f0e8f8;
+  --ds-on-primary-fixed: #0d0810;
+  --ds-on-primary-fixed-variant: #2a1a3d;
+  --ds-inverse-primary: #4D1979;
+  --ds-secondary: #9f7abf;
+  --ds-secondary-container: #6b3fa0;
+  --ds-secondary-fixed: #EDE0F5;
+  --ds-secondary-fixed-dim: #9f7abf;
+  --ds-on-secondary: #f0e8f8;
+  --ds-on-secondary-container: #f0e8f8;
+  --ds-on-secondary-fixed: #0d0810;
+  --ds-on-secondary-fixed-variant: #1a0d2e;
+  --ds-tertiary: #c4a8d8;
+  --ds-tertiary-container: #4D1979;
+  --ds-tertiary-fixed: #e8d8f0;
+  --ds-tertiary-fixed-dim: #c4a8d8;
+  --ds-on-tertiary: #0d0810;
+  --ds-on-tertiary-container: #f0e8f8;
+  --ds-on-tertiary-fixed: #0d0810;
+  --ds-on-tertiary-fixed-variant: #1a0d2e;
+  --ds-error: #ffb4ab;
+  --ds-error-container: #93000a;
+  --ds-on-error: #690005;
+  --ds-on-error-container: #ffdad6;
+  --ds-on-surface: #f0e8f8;
+  --ds-on-surface-variant: #c4a8d8;
+  --ds-on-background: #f0e8f8;
+  --ds-outline: #9f7abf;
+  --ds-outline-variant: #2a1a3d;
+  --ds-inverse-surface: #f0e8f8;
+  --ds-inverse-on-surface: #0d0810;
+  color-scheme: dark;
 }
 
 :root {
@@ -226,21 +685,21 @@
     border: 1px solid rgba(66, 71, 84, 0.15);
   }
   .gradient-cta {
-    background: linear-gradient(135deg, #adc6ff, #4d8eff);
-    color: #002e6a;
+    background: linear-gradient(135deg, var(--ds-primary-fixed-dim), var(--ds-primary-container));
+    color: var(--ds-on-primary);
   }
   .frosted-glass {
-    background: rgba(19, 19, 19, 0.8);
+    background: color-mix(in srgb, var(--ds-surface-nav) 90%, transparent);
     backdrop-filter: blur(16px);
   }
   .gradient-text {
-    background: linear-gradient(135deg, #adc6ff, #4d8eff);
+    background: linear-gradient(135deg, var(--ds-primary-fixed-dim), var(--ds-primary-container));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
   .progress-gradient {
-    background: linear-gradient(90deg, #ffb95f, #ee9800);
+    background: linear-gradient(90deg, var(--ds-secondary), var(--ds-secondary-container));
   }
   .perspective-1000 {
     perspective: 1000px;
