@@ -12,6 +12,7 @@ const MAX_BYTES = 5 * 1024 * 1024; // 5 MB
 
 export function UploadZone({ onFile, error, disabled }: UploadZoneProps) {
   const inputRef = useRef<HTMLInputElement>(null);
+  const dragCounter = useRef(0);
   const [dragging, setDragging] = useState(false);
   const [localError, setLocalError] = useState<string | null>(null);
 
@@ -35,22 +36,54 @@ export function UploadZone({ onFile, error, disabled }: UploadZoneProps) {
   const onDrop = useCallback(
     (e: React.DragEvent) => {
       e.preventDefault();
+      dragCounter.current = 0;
       setDragging(false);
       if (disabled) return;
+      if (e.dataTransfer.files.length > 1) {
+        setLocalError("Please upload one PDF at a time.");
+        return;
+      }
       validate(e.dataTransfer.files[0]);
     },
     [validate, disabled]
   );
 
+  const onDragEnter = useCallback(
+    (e: React.DragEvent) => {
+      e.preventDefault();
+      if (disabled) return;
+      dragCounter.current++;
+      setDragging(true);
+    },
+    [disabled]
+  );
+
+  const onDragLeave = useCallback(() => {
+    dragCounter.current--;
+    if (dragCounter.current === 0) setDragging(false);
+  }, []);
+
   const displayError = localError || error;
 
   return (
     <div className="space-y-2">
+      {/* border-dashed is intentional here — the design spec permits it as a drop-target affordance */}
       <div
         onDrop={onDrop}
-        onDragOver={(e) => { e.preventDefault(); if (!disabled) setDragging(true); }}
-        onDragLeave={() => setDragging(false)}
+        onDragEnter={onDragEnter}
+        onDragOver={(e) => e.preventDefault()}
+        onDragLeave={onDragLeave}
         onClick={() => !disabled && inputRef.current?.click()}
+        onKeyDown={(e) => {
+          if (!disabled && (e.key === "Enter" || e.key === " ")) {
+            e.preventDefault();
+            inputRef.current?.click();
+          }
+        }}
+        tabIndex={disabled ? -1 : 0}
+        role="button"
+        aria-label="Upload PDF file"
+        aria-disabled={disabled}
         className={[
           "rounded-2xl p-10 flex flex-col items-center justify-center gap-3 cursor-pointer transition-colors",
           "border-2 border-dashed",
@@ -60,7 +93,7 @@ export function UploadZone({ onFile, error, disabled }: UploadZoneProps) {
           disabled ? "opacity-50 cursor-not-allowed" : "",
         ].join(" ")}
       >
-        <span className="material-symbols-outlined text-4xl text-outline">
+        <span aria-hidden="true" className="material-symbols-outlined text-4xl text-outline">
           upload_file
         </span>
         <div className="text-center">
@@ -78,11 +111,14 @@ export function UploadZone({ onFile, error, disabled }: UploadZoneProps) {
           accept="application/pdf"
           className="hidden"
           disabled={disabled}
-          onChange={(e) => validate(e.target.files?.[0])}
+          onChange={(e) => {
+            validate(e.target.files?.[0]);
+            e.target.value = ""; // allow re-upload of the same file
+          }}
         />
       </div>
       {displayError && (
-        <p className="text-sm text-error px-1">{displayError}</p>
+        <p role="alert" className="text-sm text-error px-1">{displayError}</p>
       )}
     </div>
   );

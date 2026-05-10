@@ -1,3 +1,5 @@
+"use client";
+
 import type { UploadedTest } from "@/lib/actions/uploaded-tests";
 
 interface TestCardProps {
@@ -6,6 +8,7 @@ interface TestCardProps {
 }
 
 export function TestCard({ test, onOpen }: TestCardProps) {
+  // uploadedAt is UTC ISO — toLocaleDateString applies the user's local timezone
   const date = new Date(test.uploadedAt).toLocaleDateString("en-US", {
     month: "short",
     day: "numeric",
@@ -14,6 +17,7 @@ export function TestCard({ test, onOpen }: TestCardProps) {
 
   return (
     <button
+      type="button"
       onClick={() => onOpen(test.id)}
       className="w-full text-left bg-surface-container-low rounded-2xl p-6 hover:bg-surface-container transition-colors group relative overflow-hidden"
     >
@@ -27,7 +31,7 @@ export function TestCard({ test, onOpen }: TestCardProps) {
             {test.questionCount} questions · Uploaded {date}
           </p>
         </div>
-        <span className="material-symbols-outlined text-xl text-outline group-hover:text-primary transition-colors shrink-0">
+        <span aria-hidden="true" className="material-symbols-outlined text-xl text-outline group-hover:text-primary transition-colors shrink-0">
           play_circle
         </span>
       </div>
