@@ -10,38 +10,46 @@ export interface ExamQuestion {
   optionC: string;
   optionD: string;
   correctAnswer: string;
-  piId: string;
+  piId?: string;
   explanation?: string;
 }
 
 interface ExamRunnerProps {
   questions: ExamQuestion[];
-  timeLimitMinutes: number;
+  timeLimitMinutes: number | null;
+  revealMode: "after" | "end";
   onSubmit: (answers: Record<string, string>) => void;
 }
 
 export function ExamRunner({
   questions,
   timeLimitMinutes,
+  revealMode,
   onSubmit,
 }: ExamRunnerProps) {
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [secondsLeft, setSecondsLeft] = useState(timeLimitMinutes * 60);
+  const [secondsLeft, setSecondsLeft] = useState<number | null>(
+    timeLimitMinutes !== null ? timeLimitMinutes * 60 : null
+  );
   const [flagged, setFlagged] = useState<Set<string>>(new Set());
 
   useEffect(() => {
+    if (secondsLeft === null) return; // no timer
     if (secondsLeft <= 0) {
       onSubmit(answers);
       return;
     }
-    const timer = setInterval(() => setSecondsLeft((s) => s - 1), 1000);
+    const timer = setInterval(
+      () => setSecondsLeft((s) => (s !== null ? s - 1 : null)),
+      1000
+    );
     return () => clearInterval(timer);
   }, [secondsLeft, answers, onSubmit]);
 
-  const hours = Math.floor(secondsLeft / 3600);
-  const mins = Math.floor((secondsLeft % 3600) / 60);
-  const secs = secondsLeft % 60;
+  const hours = secondsLeft !== null ? Math.floor(secondsLeft / 3600) : 0;
+  const mins = secondsLeft !== null ? Math.floor((secondsLeft % 3600) / 60) : 0;
+  const secs = secondsLeft !== null ? secondsLeft % 60 : 0;
 
   const current = questions[currentIndex];
   const answered = Object.keys(answers).length;
@@ -59,19 +67,24 @@ export function ExamRunner({
     <div className="space-y-6">
       {/* Timer + Progress */}
       <div className="flex items-center justify-between bg-surface-container-low rounded-2xl p-4">
-        <div className="flex items-center gap-2">
-          <span className="material-symbols-outlined text-lg text-outline">
-            timer
-          </span>
-          <span
-            className={`font-mono text-lg ${
-              secondsLeft < 300 ? "text-error" : "text-on-surface"
-            }`}
-          >
-            {hours > 0 ? `${hours}:` : ""}
-            {String(mins).padStart(2, "0")}:{String(secs).padStart(2, "0")}
-          </span>
-        </div>
+        {secondsLeft !== null ? (
+          <div className="flex items-center gap-2">
+            <span className="material-symbols-outlined text-lg text-outline">timer</span>
+            <span
+              className={`font-mono text-lg ${
+                secondsLeft < 300 ? "text-error" : "text-on-surface"
+              }`}
+            >
+              {hours > 0 ? `${hours}:` : ""}
+              {String(mins).padStart(2, "0")}:{String(secs).padStart(2, "0")}
+            </span>
+          </div>
+        ) : (
+          <div className="flex items-center gap-2">
+            <span className="material-symbols-outlined text-lg text-outline">timer_off</span>
+            <span className="text-sm text-outline">No time limit</span>
+          </div>
+        )}
         <span className="text-sm text-outline">
           {answered}/{questions.length} answered
         </span>
@@ -90,7 +103,8 @@ export function ExamRunner({
               { key: "D", text: current.optionD },
             ]}
             selectedAnswer={answers[current.id] || null}
-            showResult={false}
+            correctAnswer={current.correctAnswer}
+            showResult={revealMode === "after" && !!answers[current.id]}
             onSelect={(key) =>
               setAnswers((prev) => ({ ...prev, [current.id]: key }))
             }
