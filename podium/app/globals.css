@@ -172,23 +172,23 @@
   --color-primary-soft: #2e5e30;
   --color-accent: #F8BC16;
   --color-accent-contrast: #000000;
-  --color-surface: #ffffff;
-  --color-surface-secondary: #E9EDEF;
-  --color-surface-tertiary: #f0f0f0;
-  --color-text: #1a1a1a;
-  --color-text-muted: #555;
-  --color-border: rgba(0, 0, 0, 0.1);
+  --color-surface: #f5f5f0;
+  --color-surface-secondary: #e8f0e9;
+  --color-surface-tertiary: #dde8de;
+  --color-text: #111a12;
+  --color-text-muted: #4a6b4d;
+  --color-border: rgba(32, 67, 33, 0.1);
 
-  /* Full design-system slots — light palette */
-  --ds-surface: #f5f5f5;
-  --ds-surface-dim: #e8e8e8;
+  /* Full design-system slots — light palette, dark green sidebar */
+  --ds-surface: #f5f5f0;
+  --ds-surface-dim: #e8ece8;
   --ds-surface-bright: #ffffff;
   --ds-surface-container-lowest: #ffffff;
-  --ds-surface-container-low: #f0f0f0;
-  --ds-surface-container: #E9EDEF;
-  --ds-surface-container-high: #dde1e3;
-  --ds-surface-container-highest: #d0d4d6;
-  --ds-surface-variant: #d0d4d6;
+  --ds-surface-container-low: #1a3520;        /* sidebar */
+  --ds-surface-container: #e8f0e9;
+  --ds-surface-container-high: #dde8de;
+  --ds-surface-container-highest: #cfd8d0;
+  --ds-surface-variant: #cfd8d0;
   --ds-surface-tint: #204321;
   --ds-primary-container: #204321;
   --ds-primary-fixed: #c8e6c9;
@@ -197,7 +197,7 @@
   --ds-on-primary-container: #ffffff;
   --ds-on-primary-fixed: #ffffff;
   --ds-on-primary-fixed-variant: #e8f5e9;
-  --ds-inverse-primary: #2e5e30;
+  --ds-inverse-primary: #4caf50;
   --ds-secondary: #F8BC16;
   --ds-secondary-container: #e6a800;
   --ds-secondary-fixed: #fff3cd;
@@ -218,14 +218,75 @@
   --ds-error-container: #fde0e0;
   --ds-on-error: #ffffff;
   --ds-on-error-container: #7f0013;
-  --ds-on-surface: #1a1a1a;
-  --ds-on-surface-variant: #444444;
-  --ds-on-background: #1a1a1a;
-  --ds-outline: #666666;
-  --ds-outline-variant: #cccccc;
-  --ds-inverse-surface: #1a1a1a;
-  --ds-inverse-on-surface: #f5f5f5;
+  --ds-on-surface: #111a12;
+  --ds-on-surface-variant: #3d5c40;
+  --ds-on-background: #111a12;
+  --ds-outline: #7aad7f;
+  --ds-outline-variant: #c5d8c6;
+  --ds-inverse-surface: #111a12;
+  --ds-inverse-on-surface: #f5f5f0;
   color-scheme: light;
+}
+
+[data-theme="prosper-eagles-dark"] {
+  /* Simple theme tokens */
+  --color-primary: #F8BC16;
+  --color-primary-soft: #ffd966;
+  --color-accent: #4edea5;
+  --color-surface: #0b1e0d;
+  --color-surface-secondary: #132c15;
+  --color-surface-tertiary: #070f08;
+  --color-text: #e0f2e1;
+  --color-text-muted: #7aad7f;
+  --color-border: rgba(248, 188, 22, 0.08);
+
+  /* Full design-system slots — full dark forest green */
+  --ds-surface: #0b1e0d;
+  --ds-surface-dim: #091509;
+  --ds-surface-bright: #1a3520;
+  --ds-surface-container-lowest: #070f08;
+  --ds-surface-container-low: #0f2410;
+  --ds-surface-container: #132c15;
+  --ds-surface-container-high: #1a3520;
+  --ds-surface-container-highest: #204321;
+  --ds-surface-variant: #1e3d20;
+  --ds-surface-tint: #F8BC16;
+  --ds-primary-container: #F8BC16;
+  --ds-primary-fixed: #fff3cd;
+  --ds-primary-fixed-dim: #F8BC16;
+  --ds-on-primary: #1a0f00;
+  --ds-on-primary-container: #000000;
+  --ds-on-primary-fixed: #000000;
+  --ds-on-primary-fixed-variant: #2a1f00;
+  --ds-inverse-primary: #e6a800;
+  --ds-secondary: #4edea5;
+  --ds-secondary-container: #00a574;
+  --ds-secondary-fixed: #6ffbc0;
+  --ds-secondary-fixed-dim: #4edea5;
+  --ds-on-secondary: #003825;
+  --ds-on-secondary-container: #003120;
+  --ds-on-secondary-fixed: #002114;
+  --ds-on-secondary-fixed-variant: #005137;
+  --ds-tertiary: #F8BC16;
+  --ds-tertiary-container: #e6a800;
+  --ds-tertiary-fixed: #fff3cd;
+  --ds-tertiary-fixed-dim: #F8BC16;
+  --ds-on-tertiary: #000000;
+  --ds-on-tertiary-container: #000000;
+  --ds-on-tertiary-fixed: #000000;
+  --ds-on-tertiary-fixed-variant: #2a1f00;
+  --ds-error: #ffb4ab;
+  --ds-error-container: #93000a;
+  --ds-on-error: #690005;
+  --ds-on-error-container: #ffdad6;
+  --ds-on-surface: #e0f2e1;
+  --ds-on-surface-variant: #9bc99f;
+  --ds-on-background: #e0f2e1;
+  --ds-outline: #7aad7f;
+  --ds-outline-variant: #1e3d20;
+  --ds-inverse-surface: #e0f2e1;
+  --ds-inverse-on-surface: #0b1e0d;
+  color-scheme: dark;
 }
 
 :root {

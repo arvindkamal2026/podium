@@ -246,34 +246,79 @@ export default function ProfilePage() {
         </div>
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "12px" }}>
-          {THEMES.map((theme) => {
-            const isActive = currentTheme.id === theme.id;
+          {THEMES.filter((t) => !t.variantOf).map((theme) => {
+            const darkVariant = THEMES.find((t) => t.variantOf === theme.id && t.mode === "dark");
+            const isFamilyActive = currentTheme.id === theme.id || currentTheme.variantOf === theme.id;
+            const isDarkVariantActive = currentTheme.id === darkVariant?.id;
+            const activeSwatches = isDarkVariantActive && darkVariant ? darkVariant.swatches : theme.swatches;
+
             return (
               <button
                 key={theme.id}
-                onClick={() => setTheme(theme.id)}
+                onClick={() => { if (!isFamilyActive) setTheme(theme.id); }}
                 className="text-left relative rounded-xl p-4 transition-colors bg-surface-container"
                 style={{
-                  border: isActive ? "2px solid var(--color-primary)" : "0.5px solid rgba(255,255,255,0.08)",
-                  cursor: "pointer",
+                  border: isFamilyActive ? "2px solid var(--color-primary)" : "0.5px solid rgba(255,255,255,0.08)",
+                  cursor: isFamilyActive ? "default" : "pointer",
                 }}
               >
-                {/* Active or Light badge */}
-                {isActive ? (
-                  <span
-                    className="absolute top-2.5 right-2.5 text-[11px] font-medium rounded-full px-2 py-0.5"
-                    style={{ background: "rgba(77,142,255,0.15)", color: "#ADC6FF" }}
+                {/* Sun/moon variant toggle — shown when this family is active and has a dark variant */}
+                {isFamilyActive && darkVariant ? (
+                  <div
+                    className="absolute top-2.5 right-2.5 flex items-center rounded-full p-0.5"
+                    style={{ background: "rgba(128,128,128,0.15)" }}
+                    onClick={(e) => e.stopPropagation()}
                   >
-                    Active
-                  </span>
-                ) : theme.mode === "light" ? (
+                    <button
+                      onClick={() => setTheme(theme.id)}
+                      title="Light"
+                      className="flex items-center justify-center rounded-full transition-colors"
+                      style={{
+                        width: 24,
+                        height: 24,
+                        background: !isDarkVariantActive ? "rgba(255,255,255,0.2)" : "transparent",
+                        border: "none",
+                        cursor: "pointer",
+                      }}
+                    >
+                      <span className="material-symbols-outlined" style={{ fontSize: 13, color: !isDarkVariantActive ? "#F8BC16" : "currentColor" }}>
+                        light_mode
+                      </span>
+                    </button>
+                    <button
+                      onClick={() => setTheme(darkVariant.id)}
+                      title="Dark"
+                      className="flex items-center justify-center rounded-full transition-colors"
+                      style={{
+                        width: 24,
+                        height: 24,
+                        background: isDarkVariantActive ? "rgba(255,255,255,0.2)" : "transparent",
+                        border: "none",
+                        cursor: "pointer",
+                      }}
+                    >
+                      <span className="material-symbols-outlined" style={{ fontSize: 13, color: isDarkVariantActive ? "#F8BC16" : "currentColor" }}>
+                        dark_mode
+                      </span>
+                    </button>
+                  </div>
+                ) : !isFamilyActive && theme.mode === "light" ? (
                   <span
                     className="absolute top-2.5 right-2.5 text-[11px] font-medium rounded-full px-2 py-0.5"
                     style={{ background: "rgba(255,185,95,0.15)", color: "#FFB95F" }}
                   >
                     Light
                   </span>
-                ) : null}
+                ) : !isFamilyActive ? (
+                  null
+                ) : (
+                  <span
+                    className="absolute top-2.5 right-2.5 text-[11px] font-medium rounded-full px-2 py-0.5"
+                    style={{ background: "rgba(77,142,255,0.15)", color: "#ADC6FF" }}
+                  >
+                    Active
+                  </span>
+                )}
 
                 {/* Mini UI preview — hardcoded hex so it always shows correctly */}
                 {theme.id === "podium-default" && (
@@ -290,24 +335,43 @@ export default function ProfilePage() {
                     </div>
                   </div>
                 )}
-                {theme.id === "prosper-eagles" && (
+                {theme.id === "prosper-eagles" && !isDarkVariantActive && (
                   <div className="rounded-lg overflow-hidden mb-3" style={{ border: "0.5px solid rgba(0,0,0,0.1)" }}>
-                    <div className="flex items-center gap-1.5 px-2" style={{ height: 22, background: "#204321" }}>
-                      <div className="rounded-full" style={{ width: 6, height: 6, background: "#F8BC16" }} />
-                      <div className="rounded" style={{ width: 32, height: 6, background: "#2e5e30" }} />
-                      <div className="rounded ml-auto" style={{ width: 20, height: 6, background: "#2e5e30" }} />
+                    <div className="flex" style={{ height: 66 }}>
+                      {/* Sidebar strip */}
+                      <div className="flex flex-col justify-center gap-1 px-1.5" style={{ width: 32, background: "#1a3520" }}>
+                        <div className="rounded-sm" style={{ height: 4, background: "#F8BC16" }} />
+                        <div className="rounded-sm" style={{ height: 4, background: "rgba(255,255,255,0.2)" }} />
+                        <div className="rounded-sm" style={{ height: 4, background: "rgba(255,255,255,0.2)" }} />
+                        <div className="rounded-sm" style={{ height: 4, background: "rgba(255,255,255,0.2)" }} />
+                      </div>
+                      {/* Content area */}
+                      <div className="flex-1 flex flex-col gap-1.5 px-2 justify-center" style={{ background: "#f5f5f0" }}>
+                        <div className="rounded" style={{ width: 40, height: 8, background: "#204321" }} />
+                        <div className="rounded" style={{ width: 28, height: 8, background: "#F8BC16" }} />
+                        <div className="rounded" style={{ width: 50, height: 5, background: "#e8f0e9" }} />
+                      </div>
                     </div>
-                    <div className="flex items-center gap-1.5 px-2" style={{ height: 44, background: "#f5f5f5" }}>
-                      <div className="rounded" style={{ width: 40, height: 14, background: "#204321" }} />
-                      <div className="rounded" style={{ width: 28, height: 14, background: "#F8BC16" }} />
-                      <div className="rounded ml-auto" style={{ width: 50, height: 6, background: "#E9EDEF" }} />
+                  </div>
+                )}
+                {theme.id === "prosper-eagles" && isDarkVariantActive && (
+                  <div className="rounded-lg overflow-hidden mb-3" style={{ border: "0.5px solid rgba(255,255,255,0.08)" }}>
+                    <div className="flex items-center gap-1.5 px-2" style={{ height: 22, background: "#070f08" }}>
+                      <div className="rounded-full" style={{ width: 6, height: 6, background: "#F8BC16" }} />
+                      <div className="rounded" style={{ width: 32, height: 6, background: "#132c15" }} />
+                      <div className="rounded ml-auto" style={{ width: 20, height: 6, background: "#132c15" }} />
+                    </div>
+                    <div className="flex items-center gap-1.5 px-2" style={{ height: 44, background: "#0b1e0d" }}>
+                      <div className="rounded" style={{ width: 40, height: 14, background: "#F8BC16" }} />
+                      <div className="rounded" style={{ width: 28, height: 14, background: "#4edea5" }} />
+                      <div className="rounded ml-auto" style={{ width: 50, height: 6, background: "#132c15" }} />
                     </div>
                   </div>
                 )}
 
                 {/* Swatch row */}
                 <div className="flex gap-1.5 mb-3">
-                  {theme.swatches.map((color, i) => (
+                  {activeSwatches.map((color, i) => (
                     <div
                       key={i}
                       className="rounded-full flex-shrink-0"
@@ -315,7 +379,7 @@ export default function ProfilePage() {
                         width: 24,
                         height: 24,
                         background: color,
-                        border: color === "#ffffff" ? "0.5px solid #ddd" : undefined,
+                        border: color === "#f5f5f0" || color === "#ffffff" ? "0.5px solid #ddd" : undefined,
                       }}
                     />
                   ))}
