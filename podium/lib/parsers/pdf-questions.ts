@@ -33,7 +33,7 @@ export function parsePdfText(rawText: string): ParseResult {
   for (const line of lines) {
     const m = line.match(answerKeyLineRe);
     if (m) {
-      answerMap[parseInt(m[1])] = m[2] as "A" | "B" | "C" | "D";
+      answerMap[parseInt(m[1], 10)] = m[2] as "A" | "B" | "C" | "D";
     }
   }
 
@@ -42,6 +42,7 @@ export function parsePdfText(rawText: string): ParseResult {
     number: number;
     text: string;
     options: Partial<Record<"A" | "B" | "C" | "D", string>>;
+    lastOptionKey: "A" | "B" | "C" | "D" | null;
   };
 
   const rawQuestions: RawQ[] = [];
@@ -62,12 +63,19 @@ export function parsePdfText(rawText: string): ParseResult {
 
     if (qm) {
       if (current) rawQuestions.push(current);
-      current = { number: parseInt(qm[1]), text: qm[2], options: {} };
+      current = { number: parseInt(qm[1], 10), text: qm[2], options: {}, lastOptionKey: null };
     } else if (om && current) {
-      current.options[om[1] as "A" | "B" | "C" | "D"] = om[2];
-    } else if (current && Object.keys(current.options).length === 0) {
-      // Continuation of question text (before any options appear)
-      current.text += " " + line;
+      const key = om[1] as "A" | "B" | "C" | "D";
+      current.options[key] = om[2];
+      current.lastOptionKey = key;
+    } else if (current) {
+      if (current.lastOptionKey) {
+        // Continuation of the most recently seen option text
+        current.options[current.lastOptionKey] += " " + line;
+      } else {
+        // Continuation of question text (before any options appear)
+        current.text += " " + line;
+      }
     }
   }
   if (current) rawQuestions.push(current);
