@@ -8,6 +8,7 @@ interface ResultsBreakdownProps {
   answers: Record<string, string>;
   score: number;
   total: number;
+  showExplain?: boolean;
 }
 
 export function ResultsBreakdown({
@@ -15,6 +16,7 @@ export function ResultsBreakdown({
   answers,
   score,
   total,
+  showExplain = true,
 }: ResultsBreakdownProps) {
   const pct = Math.round((score / total) * 100);
 
@@ -71,7 +73,7 @@ export function ResultsBreakdown({
                   showResult={true}
                   onSelect={() => {}}
                 />
-                {!isCorrect && (
+                {!isCorrect && showExplain && (
                   <ExplainButton
                     question={q.question}
                     optionA={q.optionA}
