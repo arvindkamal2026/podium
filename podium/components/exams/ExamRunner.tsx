@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect, useCallback } from "react";
 import { QuestionCard } from "./QuestionCard";
+import { SubmitConfirmDialog } from "./SubmitConfirmDialog";
 
 export interface ExamQuestion {
   id: string;
@@ -33,6 +34,7 @@ export function ExamRunner({
     timeLimitMinutes !== null ? timeLimitMinutes * 60 : null
   );
   const [flagged, setFlagged] = useState<Set<string>>(new Set());
+  const [showConfirm, setShowConfirm] = useState(false);
 
   useEffect(() => {
     if (secondsLeft === null) return; // no timer
@@ -153,12 +155,38 @@ export function ExamRunner({
           </button>
         ) : (
           <button
-            onClick={() => onSubmit(answers)}
+            type="button"
+            onClick={() => {
+              const unanswered = questions.length - Object.keys(answers).length;
+              if (unanswered > 0 || flagged.size > 0) {
+                setShowConfirm(true);
+              } else {
+                onSubmit(answers);
+              }
+            }}
             className="gradient-cta rounded-xl px-5 py-2.5 text-sm font-semibold"
           >
             Submit Exam
           </button>
         )}
+      </div>
+
+      {/* Persistent submit — available at any time */}
+      <div className="flex justify-end">
+        <button
+          type="button"
+          onClick={() => {
+            const unanswered = questions.length - Object.keys(answers).length;
+            if (unanswered > 0 || flagged.size > 0) {
+              setShowConfirm(true);
+            } else {
+              onSubmit(answers);
+            }
+          }}
+          className="gradient-cta rounded-xl px-5 py-2.5 text-sm font-semibold"
+        >
+          Submit Test
+        </button>
       </div>
 
       {/* Question Grid */}
@@ -181,6 +209,15 @@ export function ExamRunner({
           </button>
         ))}
       </div>
+
+      {showConfirm && (
+        <SubmitConfirmDialog
+          unansweredCount={questions.length - Object.keys(answers).length}
+          flaggedCount={flagged.size}
+          onConfirm={() => { setShowConfirm(false); onSubmit(answers); }}
+          onCancel={() => setShowConfirm(false)}
+        />
+      )}
     </div>
   );
 }
