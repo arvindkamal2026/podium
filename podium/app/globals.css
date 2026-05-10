@@ -100,6 +100,39 @@
   --font-label: var(--font-body), "Inter", sans-serif;
 }
 
+/* ─── Theme token layer ─────────────────────────────────────────────────── */
+/* Components reference these; each [data-theme] block overrides them.       */
+/* Adding a new theme requires only: (1) a [data-theme] block here,          */
+/* (2) a new object in lib/themes.ts.                                         */
+
+:root,
+[data-theme="podium-default"] {
+  --color-primary: #4D8EFF;
+  --color-primary-soft: #ADC6FF;
+  --color-accent: #FFB95F;
+  --color-surface: #111118;
+  --color-surface-secondary: #1a1a2e;
+  --color-surface-tertiary: #0a0a0f;
+  --color-text: #f0f0f0;
+  --color-text-muted: #888;
+  --color-border: rgba(255, 255, 255, 0.08);
+  color-scheme: dark;
+}
+
+[data-theme="prosper-eagles"] {
+  --color-primary: #204321;
+  --color-primary-soft: #2e5e30;
+  --color-accent: #F8BC16;
+  --color-accent-contrast: #000000;
+  --color-surface: #ffffff;
+  --color-surface-secondary: #E9EDEF;
+  --color-surface-tertiary: #f0f0f0;
+  --color-text: #1a1a1a;
+  --color-text-muted: #555;
+  --color-border: rgba(0, 0, 0, 0.1);
+  color-scheme: light;
+}
+
 :root {
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);

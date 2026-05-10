@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { ThemeProvider } from "@/context/ThemeContext";
 import "./globals.css";
 
 const plusJakarta = Plus_Jakarta_Sans({
@@ -26,9 +27,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className="dark">
       <head>
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+        {/* FOUC prevention: apply saved theme before CSS evaluates */}
+        <script dangerouslySetInnerHTML={{ __html: `(function(){var t=localStorage.getItem('podium-theme');if(t){document.documentElement.setAttribute('data-theme',t);var light=['prosper-eagles'];document.documentElement.style.colorScheme=light.includes(t)?'light':'dark';}})();` }} />
       </head>
       <body className={`${plusJakarta.variable} ${inter.variable} bg-surface text-on-surface font-body antialiased`}>
-        {children}
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
         <Analytics />
         <SpeedInsights />
       </body>

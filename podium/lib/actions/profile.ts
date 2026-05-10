@@ -30,6 +30,21 @@ export async function updateProfile(data: {
   }
 }
 
+export async function updateTheme(themeId: string) {
+  const cookieStore = await cookies();
+  const session = cookieStore.get("session")?.value;
+  if (!session) return { success: false, error: "Not authenticated" };
+
+  try {
+    const decodedClaims = await getAdminAuth().verifySessionCookie(session, true);
+    await getAdminDb().collection("users").doc(decodedClaims.uid).update({ theme: themeId });
+    return { success: true };
+  } catch (error) {
+    console.error("Theme update error:", error);
+    return { success: false, error: "Failed to update theme" };
+  }
+}
+
 export async function deleteAccount() {
   const cookieStore = await cookies();
   const session = cookieStore.get("session")?.value;
