@@ -26,7 +26,7 @@ export default function ThemesPage() {
             return (
               <button
                 key={theme.id}
-                onClick={() => { if (!isFamilyActive) setTheme(theme.id); }}
+                onClick={() => { if (!isFamilyActive) setTheme(darkVariant ? darkVariant.id : theme.id); }}
                 className="text-left relative rounded-xl p-4 transition-colors bg-surface-container"
                 style={{
                   border: isFamilyActive ? "2px solid var(--color-primary)" : "0.5px solid rgba(255,255,255,0.08)",
