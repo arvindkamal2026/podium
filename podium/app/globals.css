@@ -321,21 +321,21 @@
     border: 1px solid rgba(66, 71, 84, 0.15);
   }
   .gradient-cta {
-    background: linear-gradient(135deg, #adc6ff, #4d8eff);
-    color: #002e6a;
+    background: linear-gradient(135deg, var(--ds-primary-fixed-dim), var(--ds-primary-container));
+    color: var(--ds-on-primary);
   }
   .frosted-glass {
-    background: rgba(19, 19, 19, 0.8);
+    background: color-mix(in srgb, var(--ds-surface) 80%, transparent);
     backdrop-filter: blur(16px);
   }
   .gradient-text {
-    background: linear-gradient(135deg, #adc6ff, #4d8eff);
+    background: linear-gradient(135deg, var(--ds-primary-fixed-dim), var(--ds-primary-container));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
   .progress-gradient {
-    background: linear-gradient(90deg, #ffb95f, #ee9800);
+    background: linear-gradient(90deg, var(--ds-secondary), var(--ds-secondary-container));
   }
   .perspective-1000 {
     perspective: 1000px;
