@@ -101,12 +101,12 @@
 }
 
 /* ─── Theme token layer ─────────────────────────────────────────────────── */
-/* Components reference these; each [data-theme] block overrides them.       */
-/* Adding a new theme requires only: (1) a [data-theme] block here,          */
-/* (2) a new object in lib/themes.ts.                                         */
+/* :root is the dark fallback. [data-theme] blocks override per-theme.        */
+/* Adding a new theme: one [data-theme] block here + one object in themes.ts. */
 
 :root,
 [data-theme="podium-default"] {
+  /* Simple theme tokens (used by theme-aware components) */
   --color-primary: #4D8EFF;
   --color-primary-soft: #ADC6FF;
   --color-accent: #FFB95F;
@@ -116,10 +116,58 @@
   --color-text: #f0f0f0;
   --color-text-muted: #888;
   --color-border: rgba(255, 255, 255, 0.08);
+
+  /* Full design-system slots — identical to current hardcoded values */
+  --ds-surface: #131313;
+  --ds-surface-dim: #131313;
+  --ds-surface-bright: #3a3939;
+  --ds-surface-container-lowest: #0e0e0e;
+  --ds-surface-container-low: #1c1b1b;
+  --ds-surface-container: #201f1f;
+  --ds-surface-container-high: #2a2a2a;
+  --ds-surface-container-highest: #353534;
+  --ds-surface-variant: #353534;
+  --ds-surface-tint: #adc6ff;
+  --ds-primary-container: #4d8eff;
+  --ds-primary-fixed: #d8e2ff;
+  --ds-primary-fixed-dim: #adc6ff;
+  --ds-on-primary: #002e6a;
+  --ds-on-primary-container: #00285d;
+  --ds-on-primary-fixed: #001a42;
+  --ds-on-primary-fixed-variant: #004395;
+  --ds-inverse-primary: #005ac2;
+  --ds-secondary: #ffb95f;
+  --ds-secondary-container: #ee9800;
+  --ds-secondary-fixed: #ffddb8;
+  --ds-secondary-fixed-dim: #ffb95f;
+  --ds-on-secondary: #472a00;
+  --ds-on-secondary-container: #5b3800;
+  --ds-on-secondary-fixed: #2a1700;
+  --ds-on-secondary-fixed-variant: #653e00;
+  --ds-tertiary: #4edea5;
+  --ds-tertiary-container: #00a574;
+  --ds-tertiary-fixed: #6ffbc0;
+  --ds-tertiary-fixed-dim: #4edea5;
+  --ds-on-tertiary: #003825;
+  --ds-on-tertiary-container: #003120;
+  --ds-on-tertiary-fixed: #002114;
+  --ds-on-tertiary-fixed-variant: #005137;
+  --ds-error: #ffb4ab;
+  --ds-error-container: #93000a;
+  --ds-on-error: #690005;
+  --ds-on-error-container: #ffdad6;
+  --ds-on-surface: #e5e2e1;
+  --ds-on-surface-variant: #c2c6d6;
+  --ds-on-background: #e5e2e1;
+  --ds-outline: #8c909f;
+  --ds-outline-variant: #424754;
+  --ds-inverse-surface: #e5e2e1;
+  --ds-inverse-on-surface: #313030;
   color-scheme: dark;
 }
 
 [data-theme="prosper-eagles"] {
+  /* Simple theme tokens */
   --color-primary: #204321;
   --color-primary-soft: #2e5e30;
   --color-accent: #F8BC16;
@@ -130,6 +178,53 @@
   --color-text: #1a1a1a;
   --color-text-muted: #555;
   --color-border: rgba(0, 0, 0, 0.1);
+
+  /* Full design-system slots — light palette */
+  --ds-surface: #f5f5f5;
+  --ds-surface-dim: #e8e8e8;
+  --ds-surface-bright: #ffffff;
+  --ds-surface-container-lowest: #ffffff;
+  --ds-surface-container-low: #f0f0f0;
+  --ds-surface-container: #E9EDEF;
+  --ds-surface-container-high: #dde1e3;
+  --ds-surface-container-highest: #d0d4d6;
+  --ds-surface-variant: #d0d4d6;
+  --ds-surface-tint: #204321;
+  --ds-primary-container: #204321;
+  --ds-primary-fixed: #c8e6c9;
+  --ds-primary-fixed-dim: #2e5e30;
+  --ds-on-primary: #ffffff;
+  --ds-on-primary-container: #ffffff;
+  --ds-on-primary-fixed: #ffffff;
+  --ds-on-primary-fixed-variant: #e8f5e9;
+  --ds-inverse-primary: #2e5e30;
+  --ds-secondary: #F8BC16;
+  --ds-secondary-container: #e6a800;
+  --ds-secondary-fixed: #fff3cd;
+  --ds-secondary-fixed-dim: #F8BC16;
+  --ds-on-secondary: #000000;
+  --ds-on-secondary-container: #000000;
+  --ds-on-secondary-fixed: #000000;
+  --ds-on-secondary-fixed-variant: #3d2f00;
+  --ds-tertiary: #2e7d32;
+  --ds-tertiary-container: #388e3c;
+  --ds-tertiary-fixed: #a5d6a7;
+  --ds-tertiary-fixed-dim: #2e7d32;
+  --ds-on-tertiary: #ffffff;
+  --ds-on-tertiary-container: #ffffff;
+  --ds-on-tertiary-fixed: #ffffff;
+  --ds-on-tertiary-fixed-variant: #e8f5e9;
+  --ds-error: #b00020;
+  --ds-error-container: #fde0e0;
+  --ds-on-error: #ffffff;
+  --ds-on-error-container: #7f0013;
+  --ds-on-surface: #1a1a1a;
+  --ds-on-surface-variant: #444444;
+  --ds-on-background: #1a1a1a;
+  --ds-outline: #666666;
+  --ds-outline-variant: #cccccc;
+  --ds-inverse-surface: #1a1a1a;
+  --ds-inverse-on-surface: #f5f5f5;
   color-scheme: light;
 }
 
