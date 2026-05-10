@@ -7,21 +7,21 @@ const features = [
     title: "Practice Exams",
     description:
       "ICDC-difficulty multiple choice exams for all 59 DECA events. Immediate feedback with AI-powered explanations for every answer.",
-    accent: "#ADC6FF",
+    accent: "var(--ds-primary-fixed-dim)",
   },
   {
     icon: "record_voice_over",
     title: "Role Play Coach",
     description:
       "Tackle realistic judged scenarios. Our AI evaluates your response against official DECA rubrics and shows you exactly where to improve.",
-    accent: "#FFB95F",
+    accent: "var(--ds-secondary)",
   },
   {
     icon: "track_changes",
     title: "PI Mastery Tracker",
     description:
       "500+ Performance Indicators mapped to every event cluster. Track Untested → Learning → Mastered as you practice.",
-    accent: "#4EDEA5",
+    accent: "var(--ds-tertiary)",
   },
 ];
 
@@ -44,10 +44,10 @@ const steps = [
 ];
 
 const clusters = [
-  { name: "Finance", icon: "account_balance", color: "#ADC6FF" },
-  { name: "Marketing", icon: "campaign", color: "#FFB95F" },
-  { name: "Business Mgmt", icon: "business_center", color: "#4EDEA5" },
-  { name: "Hospitality", icon: "hotel", color: "#FFB4AB" },
+  { name: "Finance", icon: "account_balance", color: "var(--ds-primary-fixed-dim)" },
+  { name: "Marketing", icon: "campaign", color: "var(--ds-secondary)" },
+  { name: "Business Mgmt", icon: "business_center", color: "var(--ds-tertiary)" },
+  { name: "Hospitality", icon: "hotel", color: "var(--ds-error)" },
   { name: "Entrepreneurship", icon: "rocket_launch", color: "#C3AAFF" },
   { name: "Personal Finance", icon: "savings", color: "#80DEEA" },
 ];
@@ -119,7 +119,7 @@ export default function LandingPage() {
               <span
                 className="material-symbols-outlined text-base"
                 style={{
-                  color: "#4EDEA5",
+                  color: "var(--ds-tertiary)",
                   fontVariationSettings: '"FILL" 1',
                 }}
               >
@@ -167,7 +167,7 @@ export default function LandingPage() {
             <span
               className="material-symbols-outlined text-7xl md:text-9xl"
               style={{
-                color: "#ADC6FF",
+                color: "var(--ds-primary-fixed-dim)",
                 opacity: 0.15,
                 fontVariationSettings: '"FILL" 1, "wght" 700',
               }}
@@ -181,7 +181,7 @@ export default function LandingPage() {
                   <span
                     key={s}
                     className="material-symbols-outlined text-base"
-                    style={{ color: "#FFB95F", fontVariationSettings: '"FILL" 1' }}
+                    style={{ color: "var(--ds-secondary)", fontVariationSettings: '"FILL" 1' }}
                   >
                     star
                   </span>
@@ -237,7 +237,7 @@ export default function LandingPage() {
                 {/* Icon */}
                 <div
                   className="w-12 h-12 rounded-xl flex items-center justify-center mb-6"
-                  style={{ background: `${feature.accent}18` }}
+                  style={{ background: `color-mix(in srgb, ${feature.accent} 10%, transparent)` }}
                 >
                   <span
                     className="material-symbols-outlined text-2xl"
@@ -324,7 +324,7 @@ export default function LandingPage() {
               >
                 <div
                   className="w-11 h-11 rounded-xl flex-shrink-0 flex items-center justify-center"
-                  style={{ background: `${cluster.color}18` }}
+                  style={{ background: `color-mix(in srgb, ${cluster.color} 10%, transparent)` }}
                 >
                   <span
                     className="material-symbols-outlined text-xl"
@@ -361,7 +361,7 @@ export default function LandingPage() {
           <span
             className="material-symbols-outlined text-6xl mb-6 block"
             style={{
-              color: "#ADC6FF",
+              color: "var(--ds-primary-fixed-dim)",
               fontVariationSettings: '"FILL" 1, "wght" 600',
             }}
           >
