@@ -236,6 +236,73 @@
   color-scheme: light;
 }
 
+[data-theme="richland-raiders"] {
+  /* Simple theme tokens */
+  /* Primary is light lavender so active nav items are readable on the black sidebar */
+  --color-primary: #D4B8E0;
+  --primary: #D4B8E0;
+  --color-primary-soft: #e8d8f0;
+  --color-accent: #4D1979;
+  --color-accent-contrast: #ffffff;
+  --color-surface: #ffffff;
+  --color-surface-secondary: #EDE0F5;
+  --color-surface-tertiary: #f5eeff;
+  --color-text: #1a1a1a;
+  --color-text-muted: #555;
+  --color-border: rgba(77, 25, 121, 0.15);
+
+  /* Nav surface — black nav bar + sidebar (Raiders site signature) */
+  --ds-surface-nav: #000000;
+
+  /* Full design-system slots */
+  --ds-surface: #ffffff;
+  --ds-surface-dim: #f5f0fa;
+  --ds-surface-bright: #ffffff;
+  --ds-surface-container-lowest: #ffffff;
+  --ds-surface-container-low: #f0e8f8;        /* cards — very light lavender */
+  --ds-surface-container: #e8ddf5;
+  --ds-surface-container-high: #ddd0ee;
+  --ds-surface-container-highest: #d4c4e8;
+  --ds-surface-variant: #EDE0F5;
+  --ds-surface-tint: #4D1979;
+  --ds-primary-container: #4D1979;            /* CTA gradient: deep purple */
+  --ds-primary-fixed: #EDE0F5;
+  --ds-primary-fixed-dim: #D4B8E0;            /* CTA gradient: lavender */
+  --ds-on-primary: #ffffff;
+  --ds-on-primary-container: #ffffff;
+  --ds-on-primary-fixed: #4D1979;
+  --ds-on-primary-fixed-variant: #6b3fa0;
+  --ds-inverse-primary: #D4B8E0;
+  --ds-secondary: #D4B8E0;
+  --ds-secondary-container: #c0a0d0;
+  --ds-secondary-fixed: #f5eeff;
+  --ds-secondary-fixed-dim: #D4B8E0;
+  --ds-on-secondary: #1a1a1a;
+  --ds-on-secondary-container: #1a1a1a;
+  --ds-on-secondary-fixed: #4D1979;
+  --ds-on-secondary-fixed-variant: #1a1a1a;
+  --ds-tertiary: #000000;
+  --ds-tertiary-container: #1a1a1a;
+  --ds-tertiary-fixed: #333333;
+  --ds-tertiary-fixed-dim: #1a1a1a;
+  --ds-on-tertiary: #ffffff;
+  --ds-on-tertiary-container: #ffffff;
+  --ds-on-tertiary-fixed: #ffffff;
+  --ds-on-tertiary-fixed-variant: #D4B8E0;
+  --ds-error: #b00020;
+  --ds-error-container: #fde0e0;
+  --ds-on-error: #ffffff;
+  --ds-on-error-container: #7f0013;
+  --ds-on-surface: #1a1a1a;
+  --ds-on-surface-variant: #c4a8d8;           /* readable on black nav, soft on white */
+  --ds-on-background: #1a1a1a;
+  --ds-outline: #9f7abf;                      /* ~6:1 on black nav, muted purple on white */
+  --ds-outline-variant: #ffffff;              /* 15% white divider on black nav */
+  --ds-inverse-surface: #1a1a1a;
+  --ds-inverse-on-surface: #ffffff;
+  color-scheme: light;
+}
+
 [data-theme="prosper-eagles-dark"] {
   /* Simple theme tokens */
   --color-primary: #F8BC16;

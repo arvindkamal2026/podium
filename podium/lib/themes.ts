@@ -26,6 +26,13 @@ export const THEMES: ThemePreset[] = [
     swatches: ["#1a3520", "#F8BC16", "#f5f5f0", "#204321"],
   },
   {
+    id: "richland-raiders",
+    label: "Richland Raiders",
+    description: "Deep purple, black & lavender. Richland High School spirit colors.",
+    mode: "light",
+    swatches: ["#4D1979", "#000000", "#D4B8E0", "#ffffff"],
+  },
+  {
     id: "prosper-eagles-dark",
     label: "Prosper Eagles Dark",
     description: "Forest green & gold. Dark variant.",

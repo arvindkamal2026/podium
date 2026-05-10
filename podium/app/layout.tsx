@@ -28,7 +28,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
         {/* FOUC prevention: apply saved theme before CSS evaluates */}
-        <script dangerouslySetInnerHTML={{ __html: `(function(){var t=localStorage.getItem('podium-theme');if(t){document.documentElement.setAttribute('data-theme',t);var light=['prosper-eagles'];document.documentElement.style.colorScheme=light.includes(t)?'light':'dark';}})();` }} />
+        <script dangerouslySetInnerHTML={{ __html: `(function(){var t=localStorage.getItem('podium-theme');if(t){document.documentElement.setAttribute('data-theme',t);var light=['prosper-eagles','richland-raiders'];document.documentElement.style.colorScheme=light.includes(t)?'light':'dark';}})();` }} />
       </head>
       <body className={`${plusJakarta.variable} ${inter.variable} bg-surface text-on-surface font-body antialiased`}>
         <ThemeProvider>

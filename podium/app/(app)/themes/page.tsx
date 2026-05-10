@@ -92,6 +92,20 @@ export default function ThemesPage() {
                 )}
 
                 {/* Mini UI preview — hardcoded hex so it always shows correctly */}
+                {theme.id === "richland-raiders" && (
+                  <div className="rounded-lg overflow-hidden mb-3" style={{ border: "0.5px solid rgba(77,25,121,0.2)" }}>
+                    <div className="flex items-center gap-1.5 px-2" style={{ height: 22, background: "#000000" }}>
+                      <div className="rounded-full" style={{ width: 6, height: 6, background: "#4D1979" }} />
+                      <div className="rounded" style={{ width: 32, height: 6, background: "#1a1a1a" }} />
+                      <div className="rounded ml-auto" style={{ width: 20, height: 6, background: "#1a1a1a" }} />
+                    </div>
+                    <div className="flex items-center gap-1.5 px-2" style={{ height: 44, background: "#D4B8E0" }}>
+                      <div className="rounded" style={{ width: 40, height: 14, background: "#4D1979" }} />
+                      <div className="rounded" style={{ width: 28, height: 14, background: "#ffffff" }} />
+                      <div className="rounded ml-auto" style={{ width: 50, height: 6, background: "#c0a0d0" }} />
+                    </div>
+                  </div>
+                )}
                 {theme.id === "podium-default" && (
                   <div className="rounded-lg overflow-hidden mb-3" style={{ border: "0.5px solid rgba(255,255,255,0.08)" }}>
                     <div className="flex items-center gap-1.5 px-2" style={{ height: 22, background: "#0a0a0f" }}>
