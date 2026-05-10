@@ -41,6 +41,10 @@ export async function saveUploadedTest(
   const uid = await getUid();
   if (!uid) return { success: false, error: "Not authenticated" };
 
+  if (questions.length > 200) {
+    return { success: false, error: "Test exceeds the maximum of 200 questions." };
+  }
+
   try {
     const db = getAdminDb();
     const testRef = db.collection("uploaded_tests").doc();
@@ -84,7 +88,8 @@ export async function getUploadedTests(): Promise<UploadedTest[]> {
     }));
 
     return tests.sort((a, b) => b.uploadedAt.localeCompare(a.uploadedAt));
-  } catch {
+  } catch (error) {
+    console.error("getUploadedTests error:", error);
     return [];
   }
 }
