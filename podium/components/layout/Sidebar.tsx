@@ -27,7 +27,7 @@ export function Sidebar() {
   }
 
   return (
-    <aside className="hidden md:flex fixed top-16 left-0 bottom-0 w-[220px] bg-surface-container-low py-6 flex-col gap-0.5 z-40">
+    <aside className="hidden md:flex fixed top-16 left-0 bottom-0 w-[220px] py-6 flex-col gap-0.5 z-40" style={{ background: "var(--ds-surface-nav)" }}>
       {NAV_ITEMS.map((item) => {
         const isActive = pathname === item.href || pathname.startsWith(item.href + "/");
         return (
@@ -37,7 +37,7 @@ export function Sidebar() {
             className={`flex items-center gap-3 px-6 py-2.5 text-sm font-medium transition-all duration-200 border-l-[3px] ${
               isActive
                 ? "text-primary bg-primary/[0.04] border-l-primary"
-                : "text-outline hover:text-on-surface-variant hover:bg-surface-container border-l-transparent"
+                : "text-outline hover:text-on-surface-variant hover:bg-white/[0.08] border-l-transparent"
             }`}
           >
             <span className="material-symbols-outlined text-xl">
@@ -59,7 +59,7 @@ export function Sidebar() {
             className={`flex items-center gap-3 px-6 py-2.5 text-sm font-medium transition-all duration-200 border-l-[3px] ${
               isActive
                 ? "text-primary bg-primary/[0.04] border-l-primary"
-                : "text-outline hover:text-on-surface-variant hover:bg-surface-container border-l-transparent"
+                : "text-outline hover:text-on-surface-variant hover:bg-white/[0.08] border-l-transparent"
             }`}
           >
             <span className="material-symbols-outlined text-xl">
@@ -74,7 +74,7 @@ export function Sidebar() {
         <div className="h-px my-4 mx-6 bg-outline-variant/15" />
         <button
           onClick={handleSignOut}
-          className="flex items-center gap-3 px-6 py-2.5 text-sm font-medium text-outline hover:text-error hover:bg-error/[0.04] transition-all duration-200 border-l-[3px] border-l-transparent w-full"
+          className="flex items-center gap-3 px-6 py-2.5 text-sm font-medium text-outline hover:text-error hover:bg-white/[0.08] transition-all duration-200 border-l-[3px] border-l-transparent w-full"
         >
           <span className="material-symbols-outlined text-xl">logout</span>
           Sign Out

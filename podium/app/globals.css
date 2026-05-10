@@ -117,6 +117,9 @@
   --color-text-muted: #888;
   --color-border: rgba(255, 255, 255, 0.08);
 
+  /* Nav surface — sidebar + frosted-glass top nav background */
+  --ds-surface-nav: #1c1b1b;
+
   /* Full design-system slots — identical to current hardcoded values */
   --ds-surface: #131313;
   --ds-surface-dim: #131313;
@@ -168,10 +171,12 @@
 
 [data-theme="prosper-eagles"] {
   /* Simple theme tokens */
-  --color-primary: #204321;
-  --color-primary-soft: #2e5e30;
-  --color-accent: #F8BC16;
-  --color-accent-contrast: #000000;
+  /* Primary is gold so active nav items are readable on the dark green sidebar */
+  --color-primary: #F8BC16;
+  --primary: #F8BC16;
+  --color-primary-soft: #ffd966;
+  --color-accent: #204321;
+  --color-accent-contrast: #ffffff;
   --color-surface: #f5f5f0;
   --color-surface-secondary: #e8f0e9;
   --color-surface-tertiary: #dde8de;
@@ -179,21 +184,24 @@
   --color-text-muted: #4a6b4d;
   --color-border: rgba(32, 67, 33, 0.1);
 
-  /* Full design-system slots — light palette, dark green sidebar */
+  /* Nav surface — dark green for sidebar + top nav */
+  --ds-surface-nav: #1a3520;
+
+  /* Full design-system slots — light palette with green tint */
   --ds-surface: #f5f5f0;
   --ds-surface-dim: #e8ece8;
   --ds-surface-bright: #ffffff;
   --ds-surface-container-lowest: #ffffff;
-  --ds-surface-container-low: #1a3520;        /* sidebar */
-  --ds-surface-container: #e8f0e9;
-  --ds-surface-container-high: #dde8de;
+  --ds-surface-container-low: #edf5ee;        /* cards/sections (light green) */
+  --ds-surface-container: #e4ede5;
+  --ds-surface-container-high: #dae7db;
   --ds-surface-container-highest: #cfd8d0;
   --ds-surface-variant: #cfd8d0;
   --ds-surface-tint: #204321;
-  --ds-primary-container: #204321;
+  --ds-primary-container: #204321;            /* CTA gradient stays deep green */
   --ds-primary-fixed: #c8e6c9;
   --ds-primary-fixed-dim: #2e5e30;
-  --ds-on-primary: #ffffff;
+  --ds-on-primary: #000000;                   /* black text on gold primary */
   --ds-on-primary-container: #ffffff;
   --ds-on-primary-fixed: #ffffff;
   --ds-on-primary-fixed-variant: #e8f5e9;
@@ -219,9 +227,9 @@
   --ds-on-error: #ffffff;
   --ds-on-error-container: #7f0013;
   --ds-on-surface: #111a12;
-  --ds-on-surface-variant: #3d5c40;
+  --ds-on-surface-variant: #a0c8a5;           /* readable on both dark nav and light cards */
   --ds-on-background: #111a12;
-  --ds-outline: #7aad7f;
+  --ds-outline: #7aad7f;                      /* ~5:1 contrast on dark nav, muted on light bg */
   --ds-outline-variant: #c5d8c6;
   --ds-inverse-surface: #111a12;
   --ds-inverse-on-surface: #f5f5f0;
@@ -231,9 +239,11 @@
 [data-theme="prosper-eagles-dark"] {
   /* Simple theme tokens */
   --color-primary: #F8BC16;
+  --primary: #F8BC16;
   --color-primary-soft: #ffd966;
   --color-accent: #4edea5;
   --color-surface: #0b1e0d;
+  --ds-surface-nav: #0f2410;
   --color-surface-secondary: #132c15;
   --color-surface-tertiary: #070f08;
   --color-text: #e0f2e1;
@@ -386,7 +396,7 @@
     color: var(--ds-on-primary);
   }
   .frosted-glass {
-    background: color-mix(in srgb, var(--ds-surface) 80%, transparent);
+    background: color-mix(in srgb, var(--ds-surface-nav) 90%, transparent);
     backdrop-filter: blur(16px);
   }
   .gradient-text {
