@@ -166,6 +166,35 @@ export default function ThemesPage() {
                   </div>
                 )}
 
+                {theme.id === "rock-hill-hawks" && !isDarkVariantActive && (
+                  <div className="rounded-lg overflow-hidden mb-3" style={{ border: "0.5px solid rgba(26,139,190,0.2)" }}>
+                    <div className="flex items-center gap-1.5 px-2" style={{ height: 22, background: "#0D0D0D" }}>
+                      <div className="rounded-full" style={{ width: 6, height: 6, background: "#1A8BBE" }} />
+                      <div className="rounded" style={{ width: 32, height: 6, background: "#1a1a1a" }} />
+                      <div className="rounded ml-auto" style={{ width: 20, height: 6, background: "#1a1a1a" }} />
+                    </div>
+                    <div className="flex items-center gap-1.5 px-2" style={{ height: 44, background: "#EEF4F8" }}>
+                      <div className="rounded" style={{ width: 40, height: 14, background: "#1A8BBE" }} />
+                      <div className="rounded" style={{ width: 28, height: 14, background: "#0D0D0D" }} />
+                      <div className="rounded ml-auto" style={{ width: 50, height: 6, background: "#C0D8E8" }} />
+                    </div>
+                  </div>
+                )}
+                {theme.id === "rock-hill-hawks" && isDarkVariantActive && (
+                  <div className="rounded-lg overflow-hidden mb-3" style={{ border: "0.5px solid rgba(26,139,190,0.15)" }}>
+                    <div className="flex items-center gap-1.5 px-2" style={{ height: 22, background: "#090C0F" }}>
+                      <div className="rounded-full" style={{ width: 6, height: 6, background: "#3DB8F5" }} />
+                      <div className="rounded" style={{ width: 32, height: 6, background: "#151A1F" }} />
+                      <div className="rounded ml-auto" style={{ width: 20, height: 6, background: "#151A1F" }} />
+                    </div>
+                    <div className="flex items-center gap-1.5 px-2" style={{ height: 44, background: "#151A1F" }}>
+                      <div className="rounded" style={{ width: 40, height: 14, background: "#1A8BBE" }} />
+                      <div className="rounded" style={{ width: 28, height: 14, background: "#3DB8F5" }} />
+                      <div className="rounded ml-auto" style={{ width: 50, height: 6, background: "#1C2329" }} />
+                    </div>
+                  </div>
+                )}
+
                 {/* Swatch row */}
                 <div className="flex gap-1.5 mb-3">
                   {activeSwatches.map((color, i) => (
