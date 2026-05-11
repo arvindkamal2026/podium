@@ -14,6 +14,7 @@ const NAV_ITEMS = [
 ];
 
 const SECONDARY_ITEMS = [
+  { href: "/community", label: "Community", icon: "public" },
   { href: "/themes", label: "Themes", icon: "palette" },
   { href: "/profile", label: "Profile", icon: "person" },
 ];
