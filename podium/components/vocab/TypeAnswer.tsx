@@ -27,11 +27,14 @@ export function TypeAnswer({ term, definition, onResult }: TypeAnswerProps) {
     const correct = fuzzyMatch(answer, definition);
     setIsCorrect(correct);
     setSubmitted(true);
-    setTimeout(() => {
-      onResult(correct);
-      setAnswer("");
-      setSubmitted(false);
-    }, 2000);
+  }
+
+  function handleNext() {
+    const correct = isCorrect;
+    setAnswer("");
+    setSubmitted(false);
+    setIsCorrect(false);
+    onResult(correct);
   }
 
   return (
@@ -66,7 +69,14 @@ export function TypeAnswer({ term, definition, onResult }: TypeAnswerProps) {
         </div>
       )}
 
-      {!submitted && (
+      {submitted ? (
+        <button
+          onClick={handleNext}
+          className="gradient-cta rounded-xl px-6 py-3 text-sm font-semibold"
+        >
+          Next →
+        </button>
+      ) : (
         <button
           onClick={handleSubmit}
           disabled={!answer.trim()}

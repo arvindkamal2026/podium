@@ -25,11 +25,13 @@ export function MultipleChoice({ word, allWords, onResult }: MultipleChoiceProps
   function handleSubmit() {
     if (!selected) return;
     setSubmitted(true);
-    setTimeout(() => {
-      onResult(selected === word.id);
-      setSelected(null);
-      setSubmitted(false);
-    }, 1500);
+  }
+
+  function handleNext() {
+    const correct = selected === word.id;
+    setSelected(null);
+    setSubmitted(false);
+    onResult(correct);
   }
 
   return (
@@ -71,7 +73,14 @@ export function MultipleChoice({ word, allWords, onResult }: MultipleChoiceProps
         })}
       </div>
 
-      {!submitted && (
+      {submitted ? (
+        <button
+          onClick={handleNext}
+          className="gradient-cta rounded-xl px-6 py-3 text-sm font-semibold"
+        >
+          Next →
+        </button>
+      ) : (
         <button
           onClick={handleSubmit}
           disabled={!selected}

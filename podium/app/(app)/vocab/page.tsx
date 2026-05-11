@@ -110,12 +110,13 @@ export default function VocabPage() {
   );
 
   const mastered = allWords.filter((w) => progress[w.id]?.status === "mastered").length;
-  const learning = allWords.filter((w) => progress[w.id]?.lastResult === "incorrect").length;
+  const learning = allWords.filter((w) => progress[w.id]?.status === "learning").length;
   const untested = allWords.filter((w) => (progress[w.id]?.status ?? "untested") === "untested").length;
+  const didntKnow = allWords.filter((w) => progress[w.id]?.lastResult === "incorrect").length;
 
   const STATUS_FILTERS: { key: StatusFilter; label: string; count: number; color: string; activeClass: string }[] = [
     { key: "all",      label: "All",         count: allWords.length, color: "text-on-surface",    activeClass: "bg-primary text-on-primary" },
-    { key: "learning", label: "Didn't Know", count: learning,        color: "text-secondary-ds",  activeClass: "bg-secondary-ds/20 text-secondary-ds border border-secondary-ds/30" },
+    { key: "learning", label: "Didn't Know", count: didntKnow,       color: "text-secondary-ds",  activeClass: "bg-secondary-ds/20 text-secondary-ds border border-secondary-ds/30" },
     { key: "mastered", label: "Mastered",    count: mastered,        color: "text-tertiary",       activeClass: "bg-tertiary/20 text-tertiary border border-tertiary/30" },
     { key: "untested", label: "Not Started", count: untested,        color: "text-error",          activeClass: "bg-error/20 text-error border border-error/30" },
   ];
