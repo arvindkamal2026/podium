@@ -4,15 +4,15 @@ import { getClientDb } from "@/lib/firebase/client";
 const NA_COUNTRIES = new Set(["US", "CA", "MX"]);
 
 export async function collectUserLocation(uid: string): Promise<void> {
-  const db = getClientDb();
-  const userRef = doc(db, "users", uid);
-  const snap = await getDoc(userRef);
-  const data = snap.data();
-
-  // Only run once — skip if already collected
-  if (data?.lat) return;
-
   try {
+    const db = getClientDb();
+    const userRef = doc(db, "users", uid);
+    const snap = await getDoc(userRef);
+    const data = snap.data();
+
+    // Only run once — skip if already collected
+    if (data?.lat) return;
+
     const res = await fetch(
       "http://ip-api.com/json/?fields=lat,lon,city,regionName,countryCode"
     );
