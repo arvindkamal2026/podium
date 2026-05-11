@@ -12,8 +12,10 @@ export async function getMapLocations(): Promise<MapLocation[]> {
     .where("lat", "!=", null)
     .get();
 
-  return snapshot.docs.map((doc) => {
-    const data = doc.data();
-    return { lat: data.lat as number, lng: data.lng as number };
-  });
+  return snapshot.docs
+    .filter((doc) => doc.data().lng != null)
+    .map((doc) => {
+      const data = doc.data();
+      return { lat: data.lat as number, lng: data.lng as number };
+    });
 }
