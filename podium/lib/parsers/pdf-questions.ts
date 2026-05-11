@@ -27,10 +27,13 @@ export function parsePdfText(rawText: string): ParseResult {
   const optionRe = /^([A-D])[\.\)]\s+(.+)/;
   // Matches answer key lines: "1. A" or "1) A" or "1. A." — number, then a SINGLE letter, nothing else
   const answerKeyLineRe = /^(\d+)[\.\)]\s*([A-D])\.?\s*$/;
+  // Lines to skip in both passes: DECA PDF page headers, copyright footers, SOURCE citations, URLs
+  const skipLineRe = /^(SOURCE[\s:]|Copyright|Test\s+\d{4}|from\s+https?:|https?:\/\/)/i;
 
   // --- Pass 1: build answer key map ---
   const answerMap: Record<number, "A" | "B" | "C" | "D"> = {};
   for (const line of lines) {
+    if (skipLineRe.test(line)) continue;
     const m = line.match(answerKeyLineRe);
     if (m) {
       answerMap[parseInt(m[1], 10)] = m[2] as "A" | "B" | "C" | "D";
@@ -49,6 +52,8 @@ export function parsePdfText(rawText: string): ParseResult {
   let current: RawQ | null = null;
 
   for (const line of lines) {
+    // Skip DECA PDF junk: page headers, copyright footers, SOURCE citations, URLs
+    if (skipLineRe.test(line)) continue;
     // Skip answer key lines so they don't get appended to question text
     if (line.match(answerKeyLineRe)) {
       if (current) {
