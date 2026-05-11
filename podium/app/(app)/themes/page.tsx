@@ -138,7 +138,7 @@ export default function ThemesPage() {
                 )}
 
                 {/* Swatch row */}
-                <div className="flex gap-1.5 mb-3">
+                <div className="flex gap-1.5 mb-2">
                   {activeSwatches.map((color, i) => (
                     <div
                       key={i}
@@ -152,6 +152,48 @@ export default function ThemesPage() {
                     />
                   ))}
                 </div>
+
+                {/* Light/dark toggle — only on active card with a dark variant */}
+                {isFamilyActive && darkVariant && (
+                  <div
+                    className="flex items-center rounded-full p-0.5 mb-3 w-fit"
+                    style={{ background: "rgba(128,128,128,0.15)" }}
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <button
+                      onClick={() => setTheme(theme.id)}
+                      title="Light"
+                      className="flex items-center justify-center rounded-full transition-colors"
+                      style={{
+                        width: 24,
+                        height: 24,
+                        background: !isDarkVariantActive ? "rgba(255,255,255,0.2)" : "transparent",
+                        border: "none",
+                        cursor: "pointer",
+                      }}
+                    >
+                      <span className="material-symbols-outlined" style={{ fontSize: 13, color: !isDarkVariantActive ? "#F8BC16" : "currentColor" }}>
+                        light_mode
+                      </span>
+                    </button>
+                    <button
+                      onClick={() => setTheme(darkVariant.id)}
+                      title="Dark"
+                      className="flex items-center justify-center rounded-full transition-colors"
+                      style={{
+                        width: 24,
+                        height: 24,
+                        background: isDarkVariantActive ? "rgba(255,255,255,0.2)" : "transparent",
+                        border: "none",
+                        cursor: "pointer",
+                      }}
+                    >
+                      <span className="material-symbols-outlined" style={{ fontSize: 13, color: isDarkVariantActive ? "#F8BC16" : "currentColor" }}>
+                        dark_mode
+                      </span>
+                    </button>
+                  </div>
+                )}
 
                 <p className="text-sm font-medium text-on-surface mb-0.5">{theme.label}</p>
                 <p className="text-xs text-outline leading-relaxed">{theme.description}</p>
