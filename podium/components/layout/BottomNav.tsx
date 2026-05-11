@@ -13,10 +13,11 @@ const PRIMARY_TABS = [
 ];
 
 const MORE_ITEMS = [
-  { href: "/roleplay", label: "Role Play",  icon: "record_voice_over" },
-  { href: "/events",   label: "Events",     icon: "category"          },
-  { href: "/themes",   label: "Themes",     icon: "palette"           },
-  { href: "/profile",  label: "Profile",    icon: "person"            },
+  { href: "/roleplay",   label: "Role Play",  icon: "record_voice_over" },
+  { href: "/events",     label: "Events",     icon: "category"          },
+  { href: "/community",  label: "Community",  icon: "public"            },
+  { href: "/themes",     label: "Themes",     icon: "palette"           },
+  { href: "/profile",    label: "Profile",    icon: "person"            },
 ];
 
 export function BottomNav() {

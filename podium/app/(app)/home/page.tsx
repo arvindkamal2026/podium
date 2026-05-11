@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useAuth } from "@/lib/hooks/useAuth";
 import { useDocument } from "@/lib/hooks/useFirestore";
 import { createGuestProfile } from "@/lib/actions/guest";
+import { collectUserLocation } from "@/lib/collect-location";
 import { CountdownTimer } from "@/components/dashboard/CountdownTimer";
 import { MasteryRing } from "@/components/dashboard/MasteryRing";
 import { StreakTracker } from "@/components/dashboard/StreakTracker";
@@ -44,6 +45,12 @@ export default function DashboardPage() {
       user.getIdToken().then((idToken) => createGuestProfile(idToken)).catch(() => {});
     }
   }, [profile, profileLoading, user]);
+
+  useEffect(() => {
+    if (user?.uid && profile) {
+      collectUserLocation(user.uid);
+    }
+  }, [user?.uid]); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (authLoading || profileLoading) {
     return (
