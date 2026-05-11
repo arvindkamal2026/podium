@@ -45,6 +45,11 @@ export async function completeOnboarding(data: OnboardingData) {
       examsTaken: 0,
       avgExamScore: 0,
       rolePlayCount: 0,
+      lat: null,
+      lng: null,
+      city: null,
+      state: null,
+      country: null,
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
     });
