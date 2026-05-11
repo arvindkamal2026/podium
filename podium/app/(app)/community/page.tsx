@@ -1,8 +1,8 @@
 import { NorthAmericaMap } from "@/components/community/NorthAmericaMap";
-import { getMapLocations } from "@/lib/map-users";
+import { getMapLocations, type MapLocation } from "@/lib/map-users";
 
 export default async function CommunityPage() {
-  let locations: Array<{ lat: number; lng: number }> = [];
+  let locations: MapLocation[] = [];
   try {
     locations = await getMapLocations();
   } catch {
