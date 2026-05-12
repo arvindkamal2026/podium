@@ -4,7 +4,7 @@ import { useMemo } from "react";
 import { pointInFeatureCollection } from "@/lib/geo/point-in-polygon";
 
 // eslint-disable-next-line @typescript-eslint/no-require-imports
-const geoData = require("@/data/north-america.geojson") as {
+const geoData = require("@/data/north-america.json") as {
   features: Array<{ geometry: { type: string; coordinates: number[][][] | number[][][][] } }>;
 };
 

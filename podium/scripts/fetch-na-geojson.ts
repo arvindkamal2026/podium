@@ -16,9 +16,9 @@ async function main() {
     features: data.features.filter((f) => NA_CODES.has(f.properties["ISO3166-1-Alpha-2"])),
   };
 
-  const outPath = join(process.cwd(), "data", "north-america.geojson");
+  const outPath = join(process.cwd(), "data", "north-america.json");
   writeFileSync(outPath, JSON.stringify(filtered));
-  console.log(`✓ Wrote ${filtered.features.length} features to data/north-america.geojson`);
+  console.log(`✓ Wrote ${filtered.features.length} features to data/north-america.json`);
 }
 
 main().catch((e) => {
