@@ -20,7 +20,7 @@ export default async function CommunityPage() {
         </p>
       </div>
 
-      <div className="relative max-w-3xl">
+      <div className="relative max-w-3xl mx-auto">
         <NorthAmericaMap userLocations={locations} />
         <div className="absolute bottom-4 left-4 flex items-center gap-2 px-4 py-2 rounded-xl backdrop-blur-[16px] bg-white/5">
           <span className="w-2 h-2 rounded-full bg-[#4EDEA5] animate-pulse" />
