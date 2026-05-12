@@ -19,7 +19,14 @@ export async function saveUserLocation(data: LocationData): Promise<{ success: b
 
   try {
     const decoded = await getAdminAuth().verifySessionCookie(session, true);
-    await getAdminDb().collection("users").doc(decoded.uid).update({
+    const db = getAdminDb();
+    const userRef = db.collection("users").doc(decoded.uid);
+
+    // Guard: only write once — check server-side where Admin SDK can read freely
+    const snap = await userRef.get();
+    if (snap.data()?.lat) return { success: false };
+
+    await userRef.update({
       lat: data.lat,
       lng: data.lng,
       city: data.city,

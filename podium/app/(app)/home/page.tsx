@@ -47,8 +47,8 @@ export default function DashboardPage() {
   }, [profile, profileLoading, user]);
 
   useEffect(() => {
-    if (user?.uid && profile) {
-      collectUserLocation(user.uid);
+    if (user?.uid) {
+      collectUserLocation();
     }
   }, [user?.uid]); // eslint-disable-line react-hooks/exhaustive-deps
 
