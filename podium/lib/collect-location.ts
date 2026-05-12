@@ -5,7 +5,7 @@ const NA_COUNTRIES = new Set(["US", "CA", "MX"]);
 export async function collectUserLocation(): Promise<void> {
   try {
     const res = await fetch(
-      "http://ip-api.com/json/?fields=lat,lon,city,regionName,countryCode"
+      "https://ip-api.com/json/?fields=lat,lon,city,regionName,countryCode"
     );
     const geo = await res.json();
 
